@@ -2,10 +2,6 @@ class_name Attack extends State
 @onready var attack_hurt_box: Area2D = %AttackHurtBox
 
 
-
-
-
-
 func enter() -> void:
 	player.is_attacking = true
 	player.can_attack = false
