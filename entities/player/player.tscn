@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://di4r6bs6yv2t2"]
+[gd_scene load_steps=35 format=3 uid="uid://di4r6bs6yv2t2"]
 
 [ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/player/SpriteSheet.png" id="1_symyc"]
@@ -7,6 +7,22 @@
 [ext_resource type="Script" uid="uid://cfwld0iinr84r" path="res://shared/states/idle.gd" id="4_qiwj3"]
 [ext_resource type="Script" uid="uid://brlv8wvp4aehp" path="res://shared/states/walk.gd" id="5_26q78"]
 [ext_resource type="Script" uid="uid://ycabutn6ry65" path="res://shared/states/attack.gd" id="6_bectd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_221hk"]
+atlas = ExtResource("1_symyc")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghoj8"]
+atlas = ExtResource("1_symyc")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1t22"]
+atlas = ExtResource("1_symyc")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50fht"]
+atlas = ExtResource("1_symyc")
+region = Rect2(16, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abrql"]
 atlas = ExtResource("1_symyc")
@@ -90,6 +106,38 @@ region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sfv1e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_221hk")
+}],
+"loop": true,
+"name": &"attack_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghoj8")
+}],
+"loop": true,
+"name": &"attack_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1t22")
+}],
+"loop": true,
+"name": &"attack_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50fht")
+}],
+"loop": true,
+"name": &"attack_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_abrql")
@@ -195,6 +243,7 @@ animations = [{
 size = Vector2(12, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qiwj3"]
+radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_abrql")
@@ -202,7 +251,7 @@ speed = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sfv1e")
-animation = &"idle_down"
+animation = &"attack_left"
 autoplay = "idle_down"
 offset = Vector2(0, -3)
 
@@ -230,3 +279,5 @@ metadata/_custom_type_script = "uid://brlv8wvp4aehp"
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("6_bectd")
 metadata/_custom_type_script = "uid://ycabutn6ry65"
+
+[node name="Shoot" type="Node" parent="StateMachine"]
