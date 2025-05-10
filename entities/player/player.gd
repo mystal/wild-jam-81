@@ -1,51 +1,38 @@
-class_name Player
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-@export_category("Movement")
-@export var SPEED: float = 80.0
+signal direction_changed(new_direction: Vector2)
 
-const ACCELERATION := 20.0 * 60.0
-const DECELRATION := 20.0 * 60.0
+@export var speed := 300.0
+@export var max_health := 100.0
+@export_range(1, 20, 0.5) var decelerate_speed := 5.0
 
-var facing := Vector2i.DOWN
+var last_direction = Vector2.DOWN
+var direction = Vector2.ZERO
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var state_machine: StateMachine = $StateMachine
+var can_attack: bool = true
+var is_attacking: bool = false
+var current_health: float = max_health
 
-var _input_vector := Vector2.ZERO
+func _ready() -> void:
+	PlayerManager.register(self)
+	state_machine.register_player(self)
 
 func _physics_process(delta: float) -> void:
-	var dir := _input_vector
-	if dir:
-		velocity = velocity.move_toward(dir * SPEED, ACCELERATION * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, DECELRATION * delta)
-
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	state_machine.physics_update(delta)
 	move_and_slide()
+	
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.handle_input(event)
 
-	if dir:
-		if absf(dir.x) > absf(dir.y):
-			facing = Vector2i.RIGHT * signf(dir.x)
-		else:
-			facing = Vector2i.DOWN * signf(dir.y)
-		# Play walk animation
-		match facing:
-			Vector2i.LEFT:
-				$AnimatedSprite2D.play("walk_left")
-			Vector2i.RIGHT:
-				$AnimatedSprite2D.play("walk_right")
-			Vector2i.UP:
-				$AnimatedSprite2D.play("walk_up")
-			Vector2i.DOWN:
-				$AnimatedSprite2D.play("walk_down")
+func get_last_direction() -> String:
+	direction_changed.emit(last_direction)
+	if last_direction.y < 0:
+		return "up"
+	elif last_direction.x < 0:
+		return "left"
+	elif last_direction.x > 0:
+		return "right"
 	else:
-		# Play idle animation
-		match facing:
-			Vector2i.LEFT:
-				$AnimatedSprite2D.play("idle_left")
-			Vector2i.RIGHT:
-				$AnimatedSprite2D.play("idle_right")
-			Vector2i.UP:
-				$AnimatedSprite2D.play("idle_up")
-			Vector2i.DOWN:
-				$AnimatedSprite2D.play("idle_down")
-
-func _unhandled_input(_event: InputEvent) -> void:
-	_input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		return "down"
