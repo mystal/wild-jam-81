@@ -1,0 +1,1 @@
+class_name ProjectileWeapon extends Area2D

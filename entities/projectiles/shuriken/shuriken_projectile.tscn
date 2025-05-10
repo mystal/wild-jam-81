@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://cn81uvam8r3xq"]
 
-[ext_resource type="Script" uid="uid://dqrsgwmaeaplc" path="res://entities/projectiles/shuriken/shuriken.gd" id="1_c3c08"]
-[ext_resource type="Texture2D" uid="uid://dqcnms5gw4xp0" path="res://entities/projectiles/shuriken/Shuriken.png" id="1_xkc4o"]
+[ext_resource type="Script" uid="uid://dqrsgwmaeaplc" path="res://entities/projectiles/shuriken/shuriken_projectile.gd" id="1_lo7x5"]
+[ext_resource type="Texture2D" uid="uid://dqcnms5gw4xp0" path="res://entities/projectiles/shuriken/ShurikenAnimated.png" id="2_ta6c4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3c08"]
-atlas = ExtResource("1_xkc4o")
+atlas = ExtResource("2_ta6c4")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sgmr"]
-atlas = ExtResource("1_xkc4o")
+atlas = ExtResource("2_ta6c4")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nyepo"]
@@ -28,8 +28,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sgmr"]
 radius = 8.06226
 
-[node name="Shuriken" type="Area2D"]
-script = ExtResource("1_c3c08")
+[node name="ShurikenProjectile" type="Area2D"]
+script = ExtResource("1_lo7x5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nyepo")

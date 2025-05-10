@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://di4r6bs6yv2t2"]
+[gd_scene load_steps=38 format=3 uid="uid://di4r6bs6yv2t2"]
 
 [ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/player/SpriteSheet.png" id="1_symyc"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://cfwld0iinr84r" path="res://shared/states/idle.gd" id="4_qiwj3"]
 [ext_resource type="Script" uid="uid://brlv8wvp4aehp" path="res://shared/states/walk.gd" id="5_26q78"]
 [ext_resource type="Script" uid="uid://ycabutn6ry65" path="res://shared/states/attack.gd" id="6_bectd"]
+[ext_resource type="PackedScene" uid="uid://b2hs4ton400b4" path="res://entities/weapons/projectile_weapon.tscn" id="8_26q78"]
+[ext_resource type="Script" uid="uid://yxmbo22r17ww" path="res://shared/states/shoot_projectile.gd" id="9_bectd"]
+[ext_resource type="PackedScene" uid="uid://cn81uvam8r3xq" path="res://entities/projectiles/shuriken/shuriken_projectile.tscn" id="10_wvtmh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_221hk"]
 atlas = ExtResource("1_symyc")
@@ -110,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_221hk")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_down",
 "speed": 5.0
 }, {
@@ -118,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ghoj8")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_left",
 "speed": 5.0
 }, {
@@ -126,7 +129,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t1t22")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_right",
 "speed": 5.0
 }, {
@@ -134,7 +137,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_50fht")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_up",
 "speed": 5.0
 }, {
@@ -168,6 +171,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_221hk")
+}],
+"loop": false,
+"name": &"shoot_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghoj8")
+}],
+"loop": false,
+"name": &"shoot_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1t22")
+}],
+"loop": false,
+"name": &"shoot_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50fht")
+}],
+"loop": false,
+"name": &"shoot_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -251,7 +286,7 @@ speed = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sfv1e")
-animation = &"attack_left"
+animation = &"shoot_up"
 autoplay = "idle_down"
 offset = Vector2(0, -3)
 
@@ -264,6 +299,8 @@ unique_name_in_owner = true
 
 [node name="AttackHurtBoxCollision" type="CollisionShape2D" parent="AttackHurtBox"]
 shape = SubResource("CircleShape2D_qiwj3")
+
+[node name="ProjectileWeapon" parent="." instance=ExtResource("8_26q78")]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_8fjmc")
@@ -280,4 +317,6 @@ metadata/_custom_type_script = "uid://brlv8wvp4aehp"
 script = ExtResource("6_bectd")
 metadata/_custom_type_script = "uid://ycabutn6ry65"
 
-[node name="Shoot" type="Node" parent="StateMachine"]
+[node name="ShootProjectile" type="Node" parent="StateMachine"]
+script = ExtResource("9_bectd")
+projectile = ExtResource("10_wvtmh")

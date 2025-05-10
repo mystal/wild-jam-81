@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2hs4ton400b4"]
+
+[ext_resource type="Texture2D" uid="uid://cldtw1readspk" path="res://entities/weapons/Shuriken.png" id="1_rkgdn"]
+[ext_resource type="Script" uid="uid://b7m8d4upyacka" path="res://entities/weapons/projectile_weapon.gd" id="1_wiq3n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ceihy"]
+radius = 3.0
+
+[node name="ProjectileWeapon" type="Area2D"]
+script = ExtResource("1_wiq3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ceihy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_rkgdn")

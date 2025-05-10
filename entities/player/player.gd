@@ -13,6 +13,7 @@ var direction = Vector2.ZERO
 var can_attack: bool = true
 var is_attacking: bool = false
 var current_health: float = max_health
+@onready var projectile_weapon: ProjectileWeapon = $ProjectileWeapon
 
 func _ready() -> void:
 	PlayerManager.register(self)
@@ -21,6 +22,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	state_machine.physics_update(delta)
+	var mouse_pos = get_global_mouse_position()
+	var dir = (mouse_pos - global_position).normalized()
+	
+	projectile_weapon.global_position = global_position + direction
+	
+	projectile_weapon.look_at(mouse_pos)
+	
 	move_and_slide()
 	
 func _unhandled_input(event: InputEvent) -> void:

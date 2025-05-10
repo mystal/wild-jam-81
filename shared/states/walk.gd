@@ -11,3 +11,6 @@ func physics_update(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack") and player.can_attack:
 		state_machine.change_state("attack")
+		
+	if Input.is_action_just_pressed("shoot") and player.can_attack:
+		state_machine.change_state("shootprojectile")
