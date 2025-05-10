@@ -24,13 +24,13 @@ func _physics_process(delta: float) -> void:
 	state_machine.physics_update(delta)
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
-	
-	projectile_weapon.global_position = global_position + direction
-	
+
+	projectile_weapon.global_position = global_position + (dir * 10.0)
+
 	projectile_weapon.look_at(mouse_pos)
-	
+
 	move_and_slide()
-	
+
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.handle_input(event)
 
