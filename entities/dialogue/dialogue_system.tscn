@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://47efbw7y2jo6"]
+[gd_scene load_steps=8 format=3 uid="uid://47efbw7y2jo6"]
 
 [ext_resource type="Script" uid="uid://c6ssd3edqjcdr" path="res://entities/dialogue/dialogue_system.gd" id="1_q5vcs"]
+[ext_resource type="Texture2D" uid="uid://8mypqlcg4l2w" path="res://entities/dialogue/DialogBoxFaceset.png" id="2_ci4hd"]
+[ext_resource type="FontFile" uid="uid://bjp01p8us6op4" path="res://entities/dialogue/NormalFont.ttf" id="3_ci4hd"]
+
+[sub_resource type="Gradient" id="Gradient_q5vcs"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ff65t"]
+gradient = SubResource("Gradient_q5vcs")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ci4hd"]
+content_margin_left = 130.0
+content_margin_top = 30.0
+content_margin_right = 130.0
+content_margin_bottom = 30.0
+texture = ExtResource("2_ci4hd")
+texture_margin_top = 4.24098
+
+[sub_resource type="FontVariation" id="FontVariation_ci4hd"]
+base_font = ExtResource("3_ci4hd")
+variation_embolden = 0.5
 
 [node name="DialogueSystem" type="CanvasLayer"]
 process_mode = 3
@@ -14,3 +36,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DialogueUI"]
+modulate = Color(0, 0, 0, 0.541176)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -248.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_ff65t")
+
+[node name="PanelContainer" type="PanelContainer" parent="DialogueUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 296.0
+offset_top = -152.0
+offset_right = 993.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ci4hd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueUI/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.439216, 0.396078, 0.321569, 1)
+theme_override_fonts/normal_font = ExtResource("3_ci4hd")
+theme_override_fonts/bold_font = SubResource("FontVariation_ci4hd")
+bbcode_enabled = true
+text = "Example [b]Text[/b]
+[wave] wavy text [/wave]
+[shake][color=orangered]Shaking Text [/color][/shake]"
+scroll_active = false
