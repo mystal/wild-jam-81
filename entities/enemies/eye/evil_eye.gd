@@ -1,5 +1,5 @@
 class_name EvilEye
-extends Enemy
+extends Character
 
 
 

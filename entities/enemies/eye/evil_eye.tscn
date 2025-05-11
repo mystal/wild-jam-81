@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dwa1120kyklxd" path="res://entities/enemies/eye/Eye.png" id="1_5uapc"]
 [ext_resource type="Script" uid="uid://cv53o26o4hrdo" path="res://entities/enemies/eye/evil_eye.gd" id="1_pjvrm"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_opgvx"]
-[ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/enemy/enemy_idle.gd" id="4_g6cxc"]
-[ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/enemy/enemy_wander.gd" id="5_huq3g"]
+[ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_g6cxc"]
+[ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="5_huq3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjvrm"]
 atlas = ExtResource("1_5uapc")

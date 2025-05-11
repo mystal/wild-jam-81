@@ -1,4 +1,4 @@
-class_name Enemy extends CharacterBody2D
+class_name Character extends CharacterBody2D
 
 @export var state_machine: StateMachine
 @export var speed: float = 30.0
@@ -10,7 +10,7 @@ var last_direction = Vector2.DOWN
 var direction = Vector2.ZERO
 
 func _ready() -> void:
-	state_machine.register_enemy(self)
+	state_machine.register_character(self)
 	
 func _physics_process(delta: float) -> void:
 	state_machine.physics_update(delta)

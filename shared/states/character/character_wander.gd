@@ -1,4 +1,4 @@
-class_name EnemyWander extends State
+class_name CharacterWander extends State
 
 @export var anim_name: String = "wander"
 @export var wander_speed: float = 20.0
@@ -16,9 +16,9 @@ var _timer: float = 0.0
 func enter() -> void:
 	_timer = randi_range(state_cycles_min, state_cycles_max) * state_animation_duration
 	_direction = DIRECTIONS.pick_random()
-	enemy.velocity = _direction * wander_speed
-	enemy.last_direction = _direction
-	enemy.animated_sprite_2d.play(anim_name + "_" + enemy.get_last_direction())
+	character.velocity = _direction * wander_speed
+	character.last_direction = _direction
+	character.animated_sprite_2d.play(anim_name + "_" + character.get_last_direction())
 
 func exit() -> void:
 	pass

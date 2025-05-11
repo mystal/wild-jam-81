@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://47efbw7y2jo6"]
+
+[ext_resource type="Script" uid="uid://c6ssd3edqjcdr" path="res://entities/dialogue/dialogue_system.gd" id="1_q5vcs"]
+
+[node name="DialogueSystem" type="CanvasLayer"]
+process_mode = 3
+layer = 0
+script = ExtResource("1_q5vcs")
+
+[node name="DialogueUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

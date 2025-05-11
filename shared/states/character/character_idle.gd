@@ -1,4 +1,4 @@
-class_name EnemyIdle extends State
+class_name CharacterIdle extends State
 
 @export var anim_name: String = "idle"
 @export_category("AI")
@@ -9,9 +9,9 @@ class_name EnemyIdle extends State
 var _timer: float = 0.0
 
 func enter() -> void:
-	enemy.velocity = Vector2.ZERO
+	character.velocity = Vector2.ZERO
 	_timer = randf_range(state_duration_min, state_duration_max)
-	enemy.animated_sprite_2d.play(anim_name + "_" + enemy.get_last_direction())
+	character.animated_sprite_2d.play(anim_name + "_" + character.get_last_direction())
 
 func exit() -> void:
 	pass

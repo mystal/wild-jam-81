@@ -3,14 +3,15 @@ class_name StateMachine extends Node
 var current_state: State = null
 var states: Dictionary = {}
 var player: Player = null
-var enemy: Enemy = null
+var character: Character = null
 
 #{"idle": Idle}
 func register_player(in_player: Player) -> void:
 	player = in_player
 	
-func register_enemy(in_enemy: Enemy) -> void:
-	enemy = in_enemy
+func register_character(in_character: Character) -> void:
+	character = in_character
+	
 
 func _ready() -> void:
 	await owner.ready
@@ -22,7 +23,7 @@ func _ready() -> void:
 			#update reference to the state machine in each constituent state
 			child.state_machine = self
 			child.player = player
-			child.enemy = enemy
+			child.character = character
 
 	#default to idle state
 	if states.has("idle"):
