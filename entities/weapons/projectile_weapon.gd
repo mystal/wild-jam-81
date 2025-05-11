@@ -1,1 +1,1 @@
-class_name ProjectileWeapon extends Area2D
+class_name ProjectileWeapon extends Node2D

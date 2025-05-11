@@ -1,10 +1,7 @@
 class_name HurtBox extends Area2D
 
-@export var damage: int = 1
+signal damaged(damage: int)
 
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-
-func _on_area_entered(area: Area2D) -> void:
-	if area is HitBox:
-		area.take_damage(damage)
+func take_damage(damage: int) -> void:
+	print("take_damage: " + str(damage))
+	damaged.emit(damage)
