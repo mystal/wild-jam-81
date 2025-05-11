@@ -25,5 +25,3 @@ func fire_projectile() -> void:
 	new_projectile.rotation = direction.angle()
 
 	get_tree().current_scene.add_child(new_projectile)
-
-
