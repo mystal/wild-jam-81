@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://d3id6v3j1hbyr"]
+
+[ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_3i7v7"]
+[ext_resource type="Texture2D" uid="uid://da7v6ec1b0moj" path="res://entities/items/health_potion/LifePot.png" id="2_ka4rx"]
+
+[resource]
+script = ExtResource("1_3i7v7")
+name = "Health Potion"
+description = "A potion that restores HP"
+texture = ExtResource("2_ka4rx")
+metadata/_custom_type_script = "uid://b1k2bly1ejbrw"

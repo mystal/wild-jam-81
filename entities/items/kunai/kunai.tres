@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bofid0ysp7nlc"]
+
+[ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_pjsx4"]
+[ext_resource type="Texture2D" uid="uid://c2oyaxoyg2ggf" path="res://entities/items/kunai/Kunai.png" id="2_apg41"]
+
+[resource]
+script = ExtResource("1_pjsx4")
+name = "Kunai"
+description = "A shotgun-like projectile"
+texture = ExtResource("2_apg41")
+metadata/_custom_type_script = "uid://b1k2bly1ejbrw"

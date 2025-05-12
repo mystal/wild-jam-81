@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cngfnas11uiow"]
+
+[ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_aq7g0"]
+[ext_resource type="Texture2D" uid="uid://dqreormqq0woy" path="res://entities/items/mysterious_scroll/Scroll.png" id="2_elwl2"]
+
+[resource]
+script = ExtResource("1_aq7g0")
+name = "Mysterious Scroll"
+description = "A mysterious scroll, which you can not quite decipher. Try taking this to the resident Scribe, Jural."
+texture = ExtResource("2_elwl2")
+metadata/_custom_type_script = "uid://b1k2bly1ejbrw"
