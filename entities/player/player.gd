@@ -15,12 +15,27 @@ var is_attacking: bool = false
 var current_health: float = max_health
 @onready var projectile_weapon: ProjectileWeapon = $ProjectileWeapon
 
+@onready var interaction_area: Area2D = $InteractionArea2D
+@onready var _interaction_collision: CollisionShape2D = $InteractionArea2D/InteractionCollision
+@onready var _interaction_offset := absf(_interaction_collision.position.y)
+
 func _ready() -> void:
 	PlayerManager.register(self)
 	state_machine.register_player(self)
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	# Update interaction collider to match new direction, if any.
+	match direction:
+		Vector2.UP:
+			_interaction_collision.position = Vector2.UP * _interaction_offset
+		Vector2.DOWN:
+			_interaction_collision.position = Vector2.DOWN * _interaction_offset
+		Vector2.LEFT:
+			_interaction_collision.position = Vector2.LEFT * _interaction_offset
+		Vector2.RIGHT:
+			_interaction_collision.position = Vector2.RIGHT * _interaction_offset
+
 	state_machine.physics_update(delta)
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()

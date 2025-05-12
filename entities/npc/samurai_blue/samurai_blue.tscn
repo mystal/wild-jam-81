@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://2ppj4lvpgxpx"]
+[gd_scene load_steps=30 format=3 uid="uid://2ppj4lvpgxpx"]
 
 [ext_resource type="Script" uid="uid://d2v08iupmiwxm" path="res://entities/npc/samurai_blue/samurai_blue.gd" id="1_0x5ob"]
 [ext_resource type="Texture2D" uid="uid://bge73r8atlur1" path="res://entities/npc/samurai_blue/SpriteSheet.png" id="2_3nji8"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_0x5ob"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_f7n7x"]
 [ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="5_p2p3q"]
+[ext_resource type="PackedScene" uid="uid://cspjykhvnnvlw" path="res://shared/interaction/intereactable.tscn" id="6_f7n7x"]
+[ext_resource type="Resource" uid="uid://ckqow50mblcwg" path="res://dev/dialogue/test.dialogue" id="7_p2p3q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ceyhw"]
 atlas = ExtResource("2_3nji8")
@@ -213,6 +215,8 @@ metadata/_custom_type_script = "uid://ck546dr231fd3"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("4_f7n7x")
+state_duration_min = 5.0
+state_duration_max = 8.0
 next_state = NodePath("../Wander")
 metadata/_custom_type_script = "uid://mxkmp63b5r2q"
 
@@ -221,3 +225,11 @@ script = ExtResource("5_p2p3q")
 anim_name = "walk"
 next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://dc8fwskd6age5"
+
+[node name="Intereactable" parent="." instance=ExtResource("6_f7n7x")]
+dialogue = ExtResource("7_p2p3q")
+
+[node name="CollisionShape2D" parent="Intereactable" index="0"]
+position = Vector2(0, 2)
+
+[editable path="Intereactable"]

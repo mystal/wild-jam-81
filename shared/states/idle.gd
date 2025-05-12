@@ -15,6 +15,9 @@ func physics_update(_delta: float) -> void:
 		state_machine.change_state("shootprojectile")
 
 func handle_input(event: InputEvent) -> void:
-	# NOTE: Temp placeholder to test dialogue
 	if event.is_action_pressed("ui_accept"):
-		DialogueManager.show_dialogue_balloon(preload("res://dev/dialogue/test.dialogue"))
+		var overlapping_interactables := player.interaction_area.get_overlapping_areas()
+		if overlapping_interactables:
+			var interactable := overlapping_interactables[0] as Interactable
+			if interactable:
+				interactable.interact()
