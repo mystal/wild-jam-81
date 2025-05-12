@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://ixhqdn8pcake"]
+
+[ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_wib62"]
+
+[resource]
+script = ExtResource("1_wib62")
+name = "Fire Scroll"
+description = "A damaging area-of-effect spell generally only used by the Fire Clan"
+metadata/_custom_type_script = "uid://b1k2bly1ejbrw"

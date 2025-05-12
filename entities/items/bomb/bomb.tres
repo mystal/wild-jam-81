@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://clk1vltooknk3"]
+
+[ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_knwrv"]
+
+[resource]
+script = ExtResource("1_knwrv")
+name = "Bomb"
+description = "Place the bomb on the ground!"
+metadata/_custom_type_script = "uid://b1k2bly1ejbrw"
