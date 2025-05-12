@@ -1,15 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://jao466m0tmgv"]
+[gd_scene load_steps=5 format=4 uid="uid://jao466m0tmgv"]
 
-[ext_resource type="PackedScene" uid="uid://47efbw7y2jo6" path="res://entities/dialogue/dialogue_system.tscn" id="1_01bur"]
-[ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/player/player.tscn" id="1_dvnf3"]
+[ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="1_dvnf3"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_kpeuh"]
-[ext_resource type="PackedScene" uid="uid://6fgjc66wuimr" path="res://entities/enemies/eye/evil_eye.tscn" id="3_qyr1s"]
-[ext_resource type="PackedScene" uid="uid://2ppj4lvpgxpx" path="res://entities/npc/samurai_blue/samurai_blue.tscn" id="4_dkl2h"]
+[ext_resource type="PackedScene" uid="uid://6fgjc66wuimr" path="res://entities/characters/eye/evil_eye.tscn" id="3_qyr1s"]
+[ext_resource type="PackedScene" uid="uid://2ppj4lvpgxpx" path="res://entities/characters/samurai/samurai_blue.tscn" id="4_dkl2h"]
 
 [node name="TestLevel" type="Node2D"]
-
-[node name="DialogueSystem" parent="." instance=ExtResource("1_01bur")]
-visible = false
 
 [node name="Tiles" type="Node2D" parent="."]
 

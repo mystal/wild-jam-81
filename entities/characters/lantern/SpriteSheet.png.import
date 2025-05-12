@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsxf5ljoadfsn"
-path="res://.godot/imported/Faceset.png-8596cd7c35ba78908de185f7857f3278.ctex"
+uid="uid://dd2go2va1vtjt"
+path="res://.godot/imported/SpriteSheet.png-a652accc215647273ee82106d18308fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/Faceset.png"
-dest_files=["res://.godot/imported/Faceset.png-8596cd7c35ba78908de185f7857f3278.ctex"]
+source_file="res://entities/characters/lantern/SpriteSheet.png"
+dest_files=["res://.godot/imported/SpriteSheet.png-a652accc215647273ee82106d18308fa.ctex"]
 
 [params]
 

@@ -1,11 +1,14 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Samurai: How many projects have you started and not finished?
+- Just a couple
+	Samurai: That's not so bad.
+- A lot
+	Samurai: Maybe you should finish one before starting another one.
+- I always finish my projects
+	Samurai: That's great!
+	Samurai: ...but how many is that?
+	- A few
+		Samurai: That's great!
+	- I haven't actually started any
+		Samurai: That's what I thought.
 => END

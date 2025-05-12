@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diuimcageyjsi"
-path="res://.godot/imported/Faceset.png-55671a1b4d55740409193c02df0f84fa.ctex"
+uid="uid://bcxv0yrcra6d4"
+path="res://.godot/imported/font8x8.png-164a81a62a5874eb7f62cf89317fc10c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/npc/samurai_blue/Faceset.png"
-dest_files=["res://.godot/imported/Faceset.png-55671a1b4d55740409193c02df0f84fa.ctex"]
+source_file="res://ui/theme/font8x8.png"
+dest_files=["res://.godot/imported/font8x8.png-164a81a62a5874eb7f62cf89317fc10c.ctex"]
 
 [params]
 

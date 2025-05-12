@@ -51,6 +51,8 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+## The character portrait to display
+@onready var face_set: TextureRect = %FaceSet
 
 func _ready() -> void:
 	balloon.hide()
@@ -97,6 +99,9 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	var face_set_path: String = "res://entities/characters /%s/Faceset.png" % dialogue_line.character.to_lower()
+	if ResourceLoader.exists(face_set_path):
+		face_set.texture = load(face_set_path)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

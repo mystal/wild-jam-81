@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://di4r6bs6yv2t2"]
 
-[ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/player/player.gd" id="1_abrql"]
-[ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/player/SpriteSheet.png" id="1_symyc"]
+[ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/characters/player/player.gd" id="1_abrql"]
+[ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/characters/player/SpriteSheet.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_8fjmc"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="3_qiwj3"]
 [ext_resource type="Script" uid="uid://cfwld0iinr84r" path="res://shared/states/idle.gd" id="4_qiwj3"]

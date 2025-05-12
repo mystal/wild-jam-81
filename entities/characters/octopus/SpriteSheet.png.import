@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bge73r8atlur1"
-path="res://.godot/imported/SpriteSheet.png-160a9f1534212ecedd8b859d09fdabbf.ctex"
+uid="uid://bmkoabi4jveqc"
+path="res://.godot/imported/SpriteSheet.png-85589c70d73c9c84eb532e1b50138ac8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/npc/samurai_blue/SpriteSheet.png"
-dest_files=["res://.godot/imported/SpriteSheet.png-160a9f1534212ecedd8b859d09fdabbf.ctex"]
+source_file="res://entities/characters/octopus/SpriteSheet.png"
+dest_files=["res://.godot/imported/SpriteSheet.png-85589c70d73c9c84eb532e1b50138ac8.ctex"]
 
 [params]
 

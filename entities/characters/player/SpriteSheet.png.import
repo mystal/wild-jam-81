@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byesiana6f0pv"
-path="res://.godot/imported/Slime3.png-3275dc4139c4407a6bc1878a4a4b5b7a.ctex"
+uid="uid://c75tjlae6g73b"
+path="res://.godot/imported/SpriteSheet.png-62e0ac7670575744e86c07adf747b66b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/slime/Slime3.png"
-dest_files=["res://.godot/imported/Slime3.png-3275dc4139c4407a6bc1878a4a4b5b7a.ctex"]
+source_file="res://entities/characters/player/SpriteSheet.png"
+dest_files=["res://.godot/imported/SpriteSheet.png-62e0ac7670575744e86c07adf747b66b.ctex"]
 
 [params]
 
