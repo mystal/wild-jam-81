@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hiua5sk1g6a"
-path="res://.godot/imported/DialogueBoxSimple.png-a09b4756024cb6db9e1433f7476cfa9c.ctex"
+uid="uid://du5gpnqbdt5to"
+path="res://.godot/imported/slider_progress.png-c98146a7ae3b7808d3eabc9fdd163717.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/dialogue/DialogueBoxSimple.png"
-dest_files=["res://.godot/imported/DialogueBoxSimple.png-a09b4756024cb6db9e1433f7476cfa9c.ctex"]
+source_file="res://ui/theme/theme_1/slider_progress.png"
+dest_files=["res://.godot/imported/slider_progress.png-c98146a7ae3b7808d3eabc9fdd163717.ctex"]
 
 [params]
 

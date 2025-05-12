@@ -9,6 +9,7 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="DialogueSystem" parent="." instance=ExtResource("1_01bur")]
+visible = false
 
 [node name="Tiles" type="Node2D" parent="."]
 

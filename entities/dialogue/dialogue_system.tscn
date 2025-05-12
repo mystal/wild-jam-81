@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://47efbw7y2jo6"]
 
 [ext_resource type="Script" uid="uid://c6ssd3edqjcdr" path="res://entities/dialogue/dialogue_system.gd" id="1_q5vcs"]
-[ext_resource type="Texture2D" uid="uid://8mypqlcg4l2w" path="res://entities/dialogue/DialogBoxFaceset.png" id="2_ci4hd"]
+[ext_resource type="Texture2D" uid="uid://8mypqlcg4l2w" path="res://ui/dialogue/DialogBoxFaceset.png" id="2_ci4hd"]
 [ext_resource type="FontFile" uid="uid://bjp01p8us6op4" path="res://entities/dialogue/NormalFont.ttf" id="3_ci4hd"]
 
 [sub_resource type="Gradient" id="Gradient_q5vcs"]

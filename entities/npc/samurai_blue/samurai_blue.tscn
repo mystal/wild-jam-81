@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://2ppj4lvpgxpx"]
+[gd_scene load_steps=31 format=3 uid="uid://2ppj4lvpgxpx"]
 
 [ext_resource type="Script" uid="uid://d2v08iupmiwxm" path="res://entities/npc/samurai_blue/samurai_blue.gd" id="1_0x5ob"]
 [ext_resource type="Texture2D" uid="uid://bge73r8atlur1" path="res://entities/npc/samurai_blue/SpriteSheet.png" id="2_3nji8"]
@@ -194,6 +194,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nji8"]
 size = Vector2(8, 7)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2p3q"]
+radius = 13.0
+
 [node name="SamuraiBlue" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
 script = ExtResource("1_0x5ob")
 state_machine = NodePath("StateMachine")
@@ -231,5 +234,7 @@ dialogue = ExtResource("7_p2p3q")
 
 [node name="CollisionShape2D" parent="Intereactable" index="0"]
 position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_p2p3q")
+debug_color = Color(0.535452, 0.565217, 0.191984, 0.42)
 
 [editable path="Intereactable"]
