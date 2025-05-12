@@ -21,6 +21,10 @@ PlayerManager="*res://globals/player_manager.gd"
 DialogueSystem="*res://entities/dialogue/dialogue_system.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://ui/dialogue/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1280
@@ -71,6 +75,10 @@ attack={
 "deadzone": 0.2,
 "events": []
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dev/dialogue/test.dialogue")
 
 [layer_names]
 

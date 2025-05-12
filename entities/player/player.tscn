@@ -286,7 +286,7 @@ speed = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sfv1e")
-animation = &"shoot_up"
+animation = &"idle_down"
 autoplay = "idle_down"
 offset = Vector2(0, -3)
 
