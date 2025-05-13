@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://ixhqdn8pcake"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ixhqdn8pcake"]
 
 [ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_wib62"]
+[ext_resource type="Texture2D" uid="uid://co1lw2ofoqfmo" path="res://entities/items/fire_scroll/ScrollFire.png" id="2_4qdig"]
 
 [resource]
 script = ExtResource("1_wib62")
 name = "Fire Scroll"
 description = "A damaging area-of-effect spell generally only used by the Fire Clan"
+texture = ExtResource("2_4qdig")
 metadata/_custom_type_script = "uid://b1k2bly1ejbrw"
