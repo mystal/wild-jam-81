@@ -1,7 +1,14 @@
 class_name EvilEye
 extends Character
 
+func _ready() -> void:
+	super._ready()
 
+func _on_hurt_box_damaged(damage: float) -> void:
+	$Health.take_damage(damage)
+
+func _on_health_died() -> void:
+	queue_free()
 
 #var facing: Vector2i = Vector2i.DOWN
 #

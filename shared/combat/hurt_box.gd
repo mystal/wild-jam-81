@@ -1,7 +1,9 @@
 class_name HurtBox extends Area2D
 
-signal damaged(damage: int)
+@export var instigator: Node
 
-func take_damage(damage: int) -> void:
+signal damaged(damage: float)
+
+func take_damage(damage: float) -> void:
 	print("take_damage: " + str(damage))
 	damaged.emit(damage)

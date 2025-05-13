@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv0aed03g6xko"]
+[gd_scene load_steps=3 format=3 uid="uid://cv0aed03g6xko"]
 
 [ext_resource type="Script" uid="uid://ctwrtnyq14cn5" path="res://shared/combat/hurt_box.gd" id="1_7k144"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi3w3"]
+
 [node name="HurtBox" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_7k144")
+
+[node name="HurtBoxCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wi3w3")
+debug_color = Color(0.238982, 0.507288, 1, 0.42)

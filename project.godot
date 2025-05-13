@@ -23,6 +23,7 @@ driver/enable_input=true
 
 PlayerManager="*res://globals/player_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Enums="*res://globals/enums.gd"
 
 [dialogue_manager]
 

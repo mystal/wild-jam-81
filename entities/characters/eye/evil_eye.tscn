@@ -1,10 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://6fgjc66wuimr"]
+[gd_scene load_steps=34 format=3 uid="uid://6fgjc66wuimr"]
 
 [ext_resource type="Texture2D" uid="uid://dwa1120kyklxd" path="res://entities/characters/eye/Eye.png" id="1_5uapc"]
 [ext_resource type="Script" uid="uid://cv53o26o4hrdo" path="res://entities/characters/eye/evil_eye.gd" id="1_pjvrm"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_opgvx"]
+[ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="4_3s3gm"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_g6cxc"]
 [ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="5_huq3g"]
+[ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="6_gt231"]
+[ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="7_5mdp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjvrm"]
 atlas = ExtResource("1_5uapc")
@@ -195,27 +198,44 @@ size = Vector2(6, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uapc"]
 size = Vector2(8, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1nb8"]
+size = Vector2(8, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3gm"]
+size = Vector2(8, 12)
+
 [node name="EvilEye" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
 collision_layer = 0
 script = ExtResource("1_pjvrm")
 state_machine = NodePath("StateMachine")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
+faction = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nqag")
 animation = &"move_up"
 autoplay = "idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6nqag")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HurtHitBoxArea" type="Area2D" parent="."]
 collision_layer = 24
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="HurtHitBoxCollision" type="CollisionShape2D" parent="HurtHitBoxArea"]
 shape = SubResource("RectangleShape2D_5uapc")
 debug_color = Color(0.981451, 0.135227, 1.92523e-07, 0.42)
+
+[node name="HurtBox" parent="." instance=ExtResource("7_5mdp6")]
+
+[node name="HurtBoxCollision" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_d1nb8")
+
+[node name="HitBox" parent="." instance=ExtResource("4_3s3gm")]
+
+[node name="HitBoxCollision" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_3s3gm")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_opgvx")
@@ -230,3 +250,14 @@ script = ExtResource("5_huq3g")
 anim_name = "move"
 next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://dnif5socsp5jq"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_gt231")
+max_health = 1.0
+metadata/_custom_type_script = "uid://vlpyllrtqxqb"
+
+[connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

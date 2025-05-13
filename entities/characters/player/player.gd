@@ -5,6 +5,7 @@ signal direction_changed(new_direction: Vector2)
 @export var speed := 300.0
 @export var max_health := 100.0
 @export_range(1, 20, 0.5) var decelerate_speed := 5.0
+@export var faction: Enums.Faction
 
 var last_direction = Vector2.DOWN
 var direction = Vector2.ZERO
