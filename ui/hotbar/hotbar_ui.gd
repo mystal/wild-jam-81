@@ -8,7 +8,12 @@ const HOTBAR_SLOT = preload("res://ui/hotbar/hotbar_slot.tscn")
 func _ready() -> void:
 	clear_inventory()
 	update_inventory()
+	PlayerManager.INVENTORY_DATA.changed.connect(_on_inventory_changed)
 
+func _on_inventory_changed() -> void:
+	clear_inventory()
+	update_inventory()
+	
 func clear_inventory() -> void:
 	for c in get_children():
 		c.queue_free()

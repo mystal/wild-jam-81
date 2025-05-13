@@ -2,7 +2,23 @@ class_name InventoryData extends Resource
 
 @export var slots: Array[SlotData]
 
-
+func _init() -> void:
+	connect_slots()
+	
+func connect_slots() -> void:
+	for s in slots:
+		if s:
+			s.changed.connect(slot_changed)
+			
+func slot_changed() -> void:
+	for s in slots:
+		if s:
+			if s.quantity < 1:
+				s.changed.disconnect(slot_changed)
+				var index = slots.find(s)
+				slots[index] = null
+				emit_changed()
+	
 func add_item(item: ItemData, quantity: int = 1) -> bool:
 	for s in slots:
 		if s:
@@ -10,11 +26,14 @@ func add_item(item: ItemData, quantity: int = 1) -> bool:
 				#handles stacking of items
 				s.quantity += quantity
 				return true
-		else:
-			var new_slot_data = SlotData.new()
-			new_slot_data.item_data = item
-			new_slot_data.quantity = quantity
-			slots.append(new_slot_data)
+		
+	for i in slots.size():
+		if slots[i] == null:
+			var new = SlotData.new()
+			new.item_data = item
+			new.quantity = quantity
+			slots[i] = new
+			new.changed.connect(slot_changed)
 			return true
 	#need to make code for max quantity, or stackable/unstackable items
 	print("inventory was full")
