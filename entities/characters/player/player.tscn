@@ -337,6 +337,7 @@ projectile = ExtResource("10_wvtmh")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("11_0s3gd")
+max_health = 100.0
 metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 
 [node name="SpellManager" type="Node" parent="."]

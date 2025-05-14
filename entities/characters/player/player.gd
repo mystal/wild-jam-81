@@ -69,7 +69,7 @@ func _on_hurt_box_damaged(damage:float) -> void:
 	$Health.take_damage(damage)
 		
 func update_hp(amount: int) -> void:
-	current_health = clampi(current_health + amount, 0, max_health)
+	$Health.heal(amount)
 	#update HUD here
 		
 func cast_spell(item_effect: ItemEffect) -> void:
