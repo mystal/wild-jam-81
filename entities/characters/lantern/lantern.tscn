@@ -53,7 +53,7 @@ size = Vector2(8, 12)
 size = Vector2(8, 12)
 
 [node name="Lantern" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
-collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_b0yhu")
 state_machine = NodePath("StateMachine")
 speed = 0.0
