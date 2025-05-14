@@ -7,6 +7,9 @@
 
 [sub_resource type="Resource" id="Resource_3o1wh"]
 script = ExtResource("2_ap1ed")
+damage = 1
+projectile_speed = 100
+area_of_effect = 50
 use_description = ""
 metadata/_custom_type_script = "uid://n1xr1kve1fsl"
 
