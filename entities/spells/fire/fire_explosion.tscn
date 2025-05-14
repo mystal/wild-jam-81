@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://br1svwcrjyiee"]
+
+[ext_resource type="SpriteFrames" uid="uid://n54u8mlluhcf" path="res://vfx/spell_effect_animations.tres" id="1_t44rq"]
+
+[node name="FireExplosion" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_t44rq")
+animation = &"flame_explosion"
