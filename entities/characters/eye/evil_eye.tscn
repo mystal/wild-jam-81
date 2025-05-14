@@ -231,11 +231,13 @@ debug_color = Color(0.981451, 0.135227, 1.92523e-07, 0.42)
 
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_d1nb8")
+debug_color = Color(0.238982, 0.507288, 1, 0.42)
 
 [node name="HitBox" parent="." instance=ExtResource("4_3s3gm")]
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_3s3gm")
+debug_color = Color(0.999519, 0, 0.110437, 0.42)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_opgvx")

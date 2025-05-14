@@ -43,4 +43,6 @@ autoplay = "travel"
 [node name="HitBoxCollision" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_1sgmr")
 
+[connection signal="hit" from="HitBox" to="." method="_on_hit_box_hit"]
+
 [editable path="HitBox"]

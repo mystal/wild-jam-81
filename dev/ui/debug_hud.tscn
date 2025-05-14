@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://d06hkcfi3rklr"]
+
+[ext_resource type="Script" uid="uid://dn0f6o7hvjspn" path="res://dev/ui/debug_hud.gd" id="1_hnymc"]
+
+[node name="DebugHud" type="CanvasLayer"]
+script = ExtResource("1_hnymc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerHealth" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 70.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 60
+text = "Health: 3"

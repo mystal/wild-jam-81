@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://di4r6bs6yv2t2"]
+[gd_scene load_steps=40 format=3 uid="uid://di4r6bs6yv2t2"]
 
 [ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/characters/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/characters/player/SpriteSheet.png" id="1_symyc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2hs4ton400b4" path="res://entities/weapons/projectile_weapon.tscn" id="8_26q78"]
 [ext_resource type="Script" uid="uid://yxmbo22r17ww" path="res://shared/states/shoot_projectile.gd" id="9_bectd"]
 [ext_resource type="PackedScene" uid="uid://cn81uvam8r3xq" path="res://entities/projectiles/shuriken/shuriken_projectile.tscn" id="10_wvtmh"]
+[ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="11_5otfs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_221hk"]
 atlas = ExtResource("1_symyc")
@@ -277,8 +278,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfv1e"]
 size = Vector2(12, 8)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qiwj3"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sybl7"]
+size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvtmh"]
 size = Vector2(10, 10)
@@ -293,17 +294,15 @@ animation = &"idle_down"
 autoplay = "idle_down"
 offset = Vector2(0, -3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_sfv1e")
 
-[node name="AttackHurtBox" parent="." instance=ExtResource("3_qiwj3")]
-unique_name_in_owner = true
-collision_layer = 16
+[node name="HurtBox" parent="." instance=ExtResource("3_qiwj3")]
 collision_mask = 8
 
-[node name="AttackHurtBoxCollision" type="CollisionShape2D" parent="AttackHurtBox"]
-shape = SubResource("CircleShape2D_qiwj3")
+[node name="HurtBoxCollision" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_sybl7")
 
 [node name="ProjectileWeapon" parent="." instance=ExtResource("8_26q78")]
 
@@ -334,3 +333,12 @@ metadata/_custom_type_script = "uid://ycabutn6ry65"
 [node name="ShootProjectile" type="Node" parent="StateMachine"]
 script = ExtResource("9_bectd")
 projectile = ExtResource("10_wvtmh")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("11_5otfs")
+max_health = 3.0
+metadata/_custom_type_script = "uid://vlpyllrtqxqb"
+
+[connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]
+
+[editable path="HurtBox"]

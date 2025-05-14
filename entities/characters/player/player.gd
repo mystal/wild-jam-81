@@ -3,7 +3,6 @@ class_name Player extends CharacterBody2D
 signal direction_changed(new_direction: Vector2)
 
 @export var speed := 300.0
-@export var max_health := 100.0
 @export_range(1, 20, 0.5) var decelerate_speed := 5.0
 @export var faction: Enums.Faction
 
@@ -13,12 +12,15 @@ var direction = Vector2.ZERO
 @onready var state_machine: StateMachine = $StateMachine
 var can_attack: bool = true
 var is_attacking: bool = false
-var current_health: float = max_health
 @onready var projectile_weapon: ProjectileWeapon = $ProjectileWeapon
 
 @onready var interaction_area: Area2D = $InteractionArea2D
 @onready var _interaction_collision: CollisionShape2D = $InteractionArea2D/InteractionCollision
 @onready var _interaction_offset := absf(_interaction_collision.position.y)
+
+var current_health: float:
+	get():
+		return $Health.current
 
 func _ready() -> void:
 	PlayerManager.register(self)
@@ -60,3 +62,6 @@ func get_last_direction() -> String:
 		return "right"
 	else:
 		return "down"
+
+func _on_hurt_box_damaged(damage:float) -> void:
+	$Health.take_damage(damage)
