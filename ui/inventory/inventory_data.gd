@@ -25,6 +25,7 @@ func add_item(item: ItemData, quantity: int = 1) -> bool:
 			if s.item_data == item:
 				#handles stacking of items
 				s.quantity += quantity
+				emit_changed()
 				return true
 		
 	for i in slots.size():
@@ -34,6 +35,7 @@ func add_item(item: ItemData, quantity: int = 1) -> bool:
 			new.quantity = quantity
 			slots[i] = new
 			new.changed.connect(slot_changed)
+			emit_changed()
 			return true
 	#need to make code for max quantity, or stackable/unstackable items
 	print("inventory was full")

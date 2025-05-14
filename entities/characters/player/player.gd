@@ -18,10 +18,12 @@ var current_health: float = max_health
 @onready var interaction_area: Area2D = $InteractionArea2D
 @onready var _interaction_collision: CollisionShape2D = $InteractionArea2D/InteractionCollision
 @onready var _interaction_offset := absf(_interaction_collision.position.y)
+@onready var spell_manager: SpellManager = $SpellManager
 
 func _ready() -> void:
 	PlayerManager.register(self)
 	state_machine.register_player(self)
+	
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -59,3 +61,10 @@ func get_last_direction() -> String:
 		return "right"
 	else:
 		return "down"
+		
+func update_hp(amount: int) -> void:
+	current_health = clampi(current_health + amount, 0, max_health)
+	#update HUD here
+		
+func cast_spell(item_effect: ItemEffect) -> void:
+	spell_manager.cast_spell(item_effect)

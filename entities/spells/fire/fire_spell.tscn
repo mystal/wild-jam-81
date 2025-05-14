@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0a8qd03qifhu"]
+
+[ext_resource type="Script" uid="uid://q5h8jwxbpg5c" path="res://entities/spells/fire/fire_spell.gd" id="1_j43pd"]
+
+[node name="FireSpell" type="Node2D"]
+script = ExtResource("1_j43pd")

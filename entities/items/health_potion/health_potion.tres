@@ -1,11 +1,20 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://d3id6v3j1hbyr"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://d3id6v3j1hbyr"]
 
 [ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_3i7v7"]
+[ext_resource type="Script" uid="uid://dyobnd2n4eqsr" path="res://entities/items/item_effects/item_effect.gd" id="1_80d28"]
+[ext_resource type="Script" uid="uid://b7gxm6mdo0k84" path="res://entities/items/item_effects/heal_effect.gd" id="2_evouo"]
 [ext_resource type="Texture2D" uid="uid://da7v6ec1b0moj" path="res://entities/items/health_potion/LifePot.png" id="2_ka4rx"]
+
+[sub_resource type="Resource" id="Resource_c8ywx"]
+script = ExtResource("2_evouo")
+heal_amount = 1
+use_description = ""
+metadata/_custom_type_script = "uid://b7gxm6mdo0k84"
 
 [resource]
 script = ExtResource("1_3i7v7")
 name = "Health Potion"
 description = "A potion that restores HP"
 texture = ExtResource("2_ka4rx")
+effects = Array[ExtResource("1_80d28")]([SubResource("Resource_c8ywx")])
 metadata/_custom_type_script = "uid://b1k2bly1ejbrw"
