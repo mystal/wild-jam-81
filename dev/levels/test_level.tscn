@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://jao466m0tmgv"]
+[gd_scene load_steps=12 format=4 uid="uid://jao466m0tmgv"]
 
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="1_dvnf3"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_kpeuh"]
 [ext_resource type="PackedScene" uid="uid://6fgjc66wuimr" path="res://entities/characters/eye/evil_eye.tscn" id="3_qyr1s"]
 [ext_resource type="PackedScene" uid="uid://2ppj4lvpgxpx" path="res://entities/characters/samurai/samurai_blue.tscn" id="4_dkl2h"]
 [ext_resource type="PackedScene" uid="uid://1lhvtggxcvl8" path="res://ui/hotbar/hotbar.tscn" id="5_01bur"]
+[ext_resource type="PackedScene" uid="uid://b5xtmm74et6bb" path="res://entities/characters/lantern/lantern.tscn" id="5_27600"]
 [ext_resource type="PackedScene" uid="uid://b2oug1iotglle" path="res://entities/items/item_pickup.tscn" id="6_wb5mu"]
 [ext_resource type="Resource" uid="uid://d3id6v3j1hbyr" path="res://entities/items/health_potion/health_potion.tres" id="7_ioy81"]
 [ext_resource type="Resource" uid="uid://bofid0ysp7nlc" path="res://entities/items/kunai/kunai.tres" id="8_27600"]
@@ -14,6 +15,12 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="Hotbar" parent="." instance=ExtResource("5_01bur")]
+
+[node name="DebugHud" parent="." instance=ExtResource("10_ioy81")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(4, 4)
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -27,30 +34,27 @@ y_sort_enabled = true
 [node name="Player" parent="Entities" instance=ExtResource("1_dvnf3")]
 position = Vector2(152, 96)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(4, 4)
+[node name="Lantern" parent="Entities" instance=ExtResource("5_27600")]
+position = Vector2(256, 79)
 
-[node name="EvilEye" parent="." instance=ExtResource("3_qyr1s")]
-position = Vector2(256, 128)
-
-[node name="SamuraiBlue" parent="." instance=ExtResource("4_dkl2h")]
+[node name="SamuraiBlue" parent="Entities" instance=ExtResource("4_dkl2h")]
 position = Vector2(99, 119)
 
-[node name="ItemPickup" parent="." instance=ExtResource("6_wb5mu")]
+[node name="EvilEye" parent="Entities" instance=ExtResource("3_qyr1s")]
+position = Vector2(256, 128)
+
+[node name="ItemPickup" parent="Entities" instance=ExtResource("6_wb5mu")]
 position = Vector2(39, 68)
 item_data = ExtResource("7_ioy81")
 
-[node name="ItemPickup4" parent="." instance=ExtResource("6_wb5mu")]
+[node name="ItemPickup4" parent="Entities" instance=ExtResource("6_wb5mu")]
 position = Vector2(82, 50)
 item_data = ExtResource("7_ioy81")
 
-[node name="ItemPickup2" parent="." instance=ExtResource("6_wb5mu")]
+[node name="ItemPickup2" parent="Entities" instance=ExtResource("6_wb5mu")]
 position = Vector2(35, 113)
 item_data = ExtResource("8_27600")
 
-[node name="ItemPickup3" parent="." instance=ExtResource("6_wb5mu")]
+[node name="ItemPickup3" parent="Entities" instance=ExtResource("6_wb5mu")]
 position = Vector2(80, 84)
 item_data = ExtResource("9_bvhtb")
-
-[node name="DebugHud" parent="." instance=ExtResource("10_ioy81")]

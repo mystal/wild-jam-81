@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://6fgjc66wuimr"]
+[gd_scene load_steps=33 format=3 uid="uid://6fgjc66wuimr"]
 
 [ext_resource type="Texture2D" uid="uid://dwa1120kyklxd" path="res://entities/characters/eye/Eye.png" id="1_5uapc"]
 [ext_resource type="Script" uid="uid://cv53o26o4hrdo" path="res://entities/characters/eye/evil_eye.gd" id="1_pjvrm"]
@@ -195,9 +195,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nqag"]
 size = Vector2(6, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uapc"]
-size = Vector2(8, 12)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1nb8"]
 size = Vector2(8, 12)
 
@@ -208,6 +205,7 @@ size = Vector2(8, 12)
 collision_layer = 0
 script = ExtResource("1_pjvrm")
 state_machine = NodePath("StateMachine")
+speed = null
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 faction = 1
 
@@ -219,25 +217,15 @@ autoplay = "idle_down"
 [node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6nqag")
 
-[node name="HurtHitBoxArea" type="Area2D" parent="."]
-collision_layer = 24
-collision_mask = 0
-
-[node name="HurtHitBoxCollision" type="CollisionShape2D" parent="HurtHitBoxArea"]
-shape = SubResource("RectangleShape2D_5uapc")
-debug_color = Color(0.981451, 0.135227, 1.92523e-07, 0.42)
-
 [node name="HurtBox" parent="." instance=ExtResource("7_5mdp6")]
 
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_d1nb8")
-debug_color = Color(0.238982, 0.507288, 1, 0.42)
 
 [node name="HitBox" parent="." instance=ExtResource("4_3s3gm")]
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_3s3gm")
-debug_color = Color(0.999519, 0, 0.110437, 0.42)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_opgvx")
@@ -255,7 +243,7 @@ metadata/_custom_type_script = "uid://dnif5socsp5jq"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_gt231")
-max_health = 1.0
+max_health = 3.0
 metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 
 [connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]

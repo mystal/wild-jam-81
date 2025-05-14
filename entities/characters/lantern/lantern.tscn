@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://b5xtmm74et6bb"]
+
+[ext_resource type="Script" uid="uid://cu05hkbxdrur1" path="res://entities/characters/lantern/lantern.gd" id="1_b0yhu"]
+[ext_resource type="Texture2D" uid="uid://dd2go2va1vtjt" path="res://entities/characters/lantern/SpriteSheet.png" id="2_b0yhu"]
+[ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="3_7ycmx"]
+[ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="4_2xxlf"]
+[ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="5_iokn8"]
+[ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="8_psesv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly7ea"]
+atlas = ExtResource("2_b0yhu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtk75"]
+atlas = ExtResource("2_b0yhu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alnrg"]
+atlas = ExtResource("2_b0yhu")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cftqr"]
+atlas = ExtResource("2_b0yhu")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nqag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtk75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alnrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cftqr")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 2.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nqag"]
+size = Vector2(6, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1nb8"]
+size = Vector2(8, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3gm"]
+size = Vector2(8, 12)
+
+[node name="Lantern" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
+collision_layer = 0
+script = ExtResource("1_b0yhu")
+state_machine = NodePath("StateMachine")
+speed = 0.0
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+faction = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6nqag")
+animation = &"idle_down"
+autoplay = "idle_down"
+
+[node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6nqag")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_7ycmx")]
+visible = false
+
+[node name="HurtBoxCollision" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_d1nb8")
+
+[node name="HitBox" parent="." instance=ExtResource("4_2xxlf")]
+
+[node name="HitBoxCollision" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_3s3gm")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_iokn8")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_psesv")
+max_health = 4.0
+metadata/_custom_type_script = "uid://vlpyllrtqxqb"
+
+[connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
