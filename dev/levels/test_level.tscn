@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://jao466m0tmgv"]
+[gd_scene load_steps=11 format=4 uid="uid://jao466m0tmgv"]
 
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="1_dvnf3"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_kpeuh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://d3id6v3j1hbyr" path="res://entities/items/health_potion/health_potion.tres" id="7_ioy81"]
 [ext_resource type="Resource" uid="uid://bofid0ysp7nlc" path="res://entities/items/kunai/kunai.tres" id="8_27600"]
 [ext_resource type="Resource" uid="uid://ixhqdn8pcake" path="res://entities/items/fire_scroll/fire_scroll.tres" id="9_bvhtb"]
+[ext_resource type="PackedScene" uid="uid://d06hkcfi3rklr" path="res://dev/ui/debug_hud.tscn" id="10_ioy81"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -51,3 +52,5 @@ item_data = ExtResource("8_27600")
 [node name="ItemPickup3" parent="." instance=ExtResource("6_wb5mu")]
 position = Vector2(80, 84)
 item_data = ExtResource("9_bvhtb")
+
+[node name="DebugHud" parent="." instance=ExtResource("10_ioy81")]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn81uvam8r3xq"]
+[gd_scene load_steps=8 format=3 uid="uid://cn81uvam8r3xq"]
 
 [ext_resource type="Script" uid="uid://dqrsgwmaeaplc" path="res://entities/projectiles/shuriken/shuriken_projectile.gd" id="1_lo7x5"]
 [ext_resource type="Texture2D" uid="uid://dqcnms5gw4xp0" path="res://entities/projectiles/shuriken/ShurikenAnimated.png" id="2_ta6c4"]
+[ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="3_ta6c4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3c08"]
 atlas = ExtResource("2_ta6c4")
@@ -28,9 +29,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sgmr"]
 radius = 8.06226
 
-[node name="ShurikenProjectile" type="Area2D"]
-collision_layer = 8
-collision_mask = 0
+[node name="ShurikenProjectile" type="Node2D"]
 script = ExtResource("1_lo7x5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -39,5 +38,11 @@ sprite_frames = SubResource("SpriteFrames_nyepo")
 animation = &"travel"
 autoplay = "travel"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" parent="." instance=ExtResource("3_ta6c4")]
+
+[node name="HitBoxCollision" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_1sgmr")
+
+[connection signal="hit" from="HitBox" to="." method="_on_hit_box_hit"]
+
+[editable path="HitBox"]

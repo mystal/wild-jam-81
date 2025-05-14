@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://capcw3wwk3fbm"]
+[gd_scene load_steps=3 format=3 uid="uid://capcw3wwk3fbm"]
 
 [ext_resource type="Script" uid="uid://86s0jw45glwo" path="res://shared/combat/hit_box.gd" id="1_rkway"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkway"]
+size = Vector2(10, 10)
+
 [node name="HitBox" type="Area2D"]
+collision_layer = 8
+collision_mask = 16
 script = ExtResource("1_rkway")
+
+[node name="HitBoxCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rkway")
+debug_color = Color(0.999519, 0, 0.110437, 0.42)
