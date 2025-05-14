@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bq6xmwp164kjk" path="res://shared/interaction/intereactable.gd" id="1_dif33"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nftwq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dif33"]
 size = Vector2(6, 6)
 
 [node name="Intereactable" type="Area2D"]
@@ -11,4 +11,4 @@ collision_mask = 0
 script = ExtResource("1_dif33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nftwq")
+shape = SubResource("RectangleShape2D_dif33")
