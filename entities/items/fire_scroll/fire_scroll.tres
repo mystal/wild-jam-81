@@ -10,6 +10,7 @@ script = ExtResource("2_ap1ed")
 damage = 10
 projectile_speed = 100
 area_of_effect = 25
+decelerate_speed = 5
 use_description = ""
 metadata/_custom_type_script = "uid://n1xr1kve1fsl"
 
