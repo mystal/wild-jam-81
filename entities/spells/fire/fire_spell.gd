@@ -15,7 +15,7 @@ func _ready() -> void:
 	visible = false
 	current_state = State.INACTIVE
 	player = PlayerManager.player
-	
+
 func _physics_process(delta: float) -> void:
 	if current_state == State.TRAVEL:
 		global_position += direction * speed * delta
@@ -31,8 +31,9 @@ func cast(item_effect: FireSpellEffect, travel_direction: Vector2) -> void:
 	current_state = State.TRAVEL
 	animated_sprite_2d.play("fire_spell_travel")
 	visible = true
+	rotation = Vector2.RIGHT.angle_to(direction)
 	pass
-	
+
 
 func _on_hit_box_hit(hurt_box: HurtBox) -> void:
 	if hurt_box.get_parent() is not Player:

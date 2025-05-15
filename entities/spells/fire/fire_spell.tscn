@@ -11,10 +11,10 @@ radius = 7.0
 script = ExtResource("1_j43pd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.57079
 sprite_frames = ExtResource("2_0la7r")
 animation = &"fire_spell_travel"
 autoplay = "fire_spell_travel"
-frame_progress = 0.788404
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 8
