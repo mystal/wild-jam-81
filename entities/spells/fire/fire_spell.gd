@@ -3,6 +3,7 @@ class_name FireSpell extends Node2D
 enum State {INACTIVE, TRAVEL, HIT}
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: HitBox = $HitBox
+@export var faction: Enums.Faction
 
 var current_state
 var player: Player
