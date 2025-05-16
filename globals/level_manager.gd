@@ -11,6 +11,7 @@ var position_offset: Vector2
 func _ready() -> void:
 	#wait for initial level to load
 	await get_tree().process_frame
+	await SceneTransition.is_node_ready()
 	level_loaded.emit()
  
 func change_tilemap_bounds(bounds: Array[Vector2]) -> void:

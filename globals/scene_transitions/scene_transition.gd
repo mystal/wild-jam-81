@@ -3,6 +3,8 @@ extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $Control/AnimationPlayer
 
+func _ready() -> void:
+	print_debug(animation_player)
 
 func fade_out() -> bool:
 	animation_player.play("fade_out")
