@@ -47,11 +47,9 @@ position = Vector2(99, 119)
 
 [node name="SlimeBlue" parent="Entities" instance=ExtResource("7_1o50d")]
 position = Vector2(168, 40)
-speed = 30.0
 
 [node name="EvilEye" parent="Entities" instance=ExtResource("3_qyr1s")]
 position = Vector2(256, 128)
-speed = 30.0
 
 [node name="ItemPickup2" parent="Entities" instance=ExtResource("6_wb5mu")]
 position = Vector2(35, 113)

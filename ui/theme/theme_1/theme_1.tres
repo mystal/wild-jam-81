@@ -307,7 +307,7 @@ region_rect = Rect2(0, 0, 16, 16)
 
 [resource]
 default_font = ExtResource("1_itlnu")
-default_font_size = 24
+default_font_size = 32
 Button/colors/font_pressed_color = Color(1, 0.678431, 0.333333, 1)
 Button/styles/disabled = SubResource("StyleBoxTexture_yqgdd")
 Button/styles/focus = SubResource("StyleBoxEmpty_osfks")
