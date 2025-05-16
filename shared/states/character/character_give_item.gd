@@ -1,4 +1,4 @@
-class_name CharacterIdle extends State
+class_name CharacterGiveItem extends State
 
 @export var anim_name: String = "idle"
 @export_category("AI")
