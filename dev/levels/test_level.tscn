@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_kpeuh"]
 [ext_resource type="PackedScene" uid="uid://6fgjc66wuimr" path="res://entities/characters/eye/evil_eye.tscn" id="3_qyr1s"]
 [ext_resource type="PackedScene" uid="uid://2ppj4lvpgxpx" path="res://entities/characters/samurai/samurai_blue.tscn" id="4_dkl2h"]
-[ext_resource type="PackedScene" path="res://entities/characters/lantern/lantern.tscn" id="5_27600"]
+[ext_resource type="PackedScene" uid="uid://b5xtmm74et6bb" path="res://entities/characters/lantern/lantern.tscn" id="5_27600"]
 [ext_resource type="PackedScene" uid="uid://b2oug1iotglle" path="res://entities/items/item_pickup.tscn" id="6_wb5mu"]
 [ext_resource type="PackedScene" uid="uid://hyehrgwxiqbd" path="res://entities/characters/slime/slime_blue.tscn" id="7_1o50d"]
 [ext_resource type="Resource" uid="uid://d3id6v3j1hbyr" path="res://entities/items/health_potion/health_potion.tres" id="7_ioy81"]
