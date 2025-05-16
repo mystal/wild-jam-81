@@ -7,8 +7,11 @@ size = Vector2(6, 6)
 
 [node name="Intereactable" type="Area2D"]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_dif33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dif33")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

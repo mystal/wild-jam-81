@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4ttcwta2i8qw" path="res://entities/characters/elder/SpriteSheet.png" id="2_4niw1"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_1sri1"]
 [ext_resource type="Texture2D" uid="uid://dqreormqq0woy" path="res://entities/items/mysterious_scroll/Scroll.png" id="3_8so2d"]
+[ext_resource type="Texture2D" uid="uid://cfm0pnnirv8w8" path="res://ui/dialogue/dialogue_icon.png" id="3_8so2d"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_15ak1"]
 [ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="5_e1myb"]
 [ext_resource type="PackedScene" uid="uid://cspjykhvnnvlw" path="res://shared/interaction/intereactable.tscn" id="6_d46lb"]
@@ -228,6 +229,11 @@ position = Vector2(-1.19209e-07, -16)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("3_8so2d")
 
+[node name="InteractIndicator" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(0, -16)
+texture = ExtResource("3_8so2d")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_3nji8")
@@ -256,5 +262,8 @@ dialogue = ExtResource("7_4niw1")
 [node name="CollisionShape2D" parent="Intereactable" index="0"]
 shape = SubResource("CircleShape2D_p2p3q")
 debug_color = Color(0.535452, 0.565217, 0.191984, 0.42)
+
+[connection signal="selected" from="Intereactable" to="." method="_on_intereactable_selected"]
+[connection signal="unselected" from="Intereactable" to="." method="_on_intereactable_unselected"]
 
 [editable path="Intereactable"]
