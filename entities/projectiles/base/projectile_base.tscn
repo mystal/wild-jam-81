@@ -10,8 +10,6 @@ radius = 8.06226
 script = ExtResource("1_a00me")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &""
-autoplay = "travel"
 
 [node name="HitBox" parent="." instance=ExtResource("3_ob6m8")]
 

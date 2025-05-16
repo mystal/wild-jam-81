@@ -2,6 +2,7 @@ class_name LanternAttack
 extends State
 
 @export var fire_rate: float = 1.0
+@export var projectile: PackedScene
 
 var _fire_timer: Timer
 
@@ -17,7 +18,15 @@ func enter() -> void:
 	_fire_timer.start(1.0 / fire_rate)
 
 func exit() -> void:
-	pass
+	_fire_timer.stop()
 
 func _on_timer_timeout() -> void:
-	print("pew")
+	if not projectile:
+		return
+
+	for dir in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
+		var new_projectile := projectile.instantiate()
+		new_projectile.position = character.global_position
+		new_projectile.rotation = dir.angle()
+		new_projectile.faction = character.faction
+		add_sibling(new_projectile)
