@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://hyehrgwxiqbd"]
 
-[ext_resource type="Script" uid="uid://cv53o26o4hrdo" path="res://entities/characters/eye/evil_eye.gd" id="1_li0pj"]
+[ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_jvo1v"]
 [ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_li0pj"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="3_jvo1v"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_v50ju"]
@@ -23,7 +23,7 @@ radius = 6.0
 [node name="SlimeBlue" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
 collision_layer = 5
 motion_mode = 1
-script = ExtResource("1_li0pj")
+script = ExtResource("1_jvo1v")
 state_machine = NodePath("StateMachine")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 faction = 1
