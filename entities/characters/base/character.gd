@@ -7,7 +7,11 @@ class_name Character extends CharacterBody2D
 
 signal direction_changed(new_direction: Vector2)
 
-var last_direction = Vector2.DOWN
+var last_direction = Vector2.DOWN:
+	set(_v):
+		last_direction = _v
+		direction_changed.emit(last_direction)
+
 var direction = Vector2.ZERO
 
 func _ready() -> void:

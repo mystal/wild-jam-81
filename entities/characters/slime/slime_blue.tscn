@@ -25,7 +25,6 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_li0pj")
 state_machine = NodePath("StateMachine")
-speed = null
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 faction = 1
 
@@ -76,6 +75,7 @@ script = ExtResource("9_jvo1v")
 anim_name = "walk"
 detection_area = NodePath("../../DetectionArea")
 attack_area = NodePath("../../HitBox")
+state_aggro_duration = 1.0
 next_state = NodePath("../Idle")
 
 [node name="Health" type="Node" parent="."]

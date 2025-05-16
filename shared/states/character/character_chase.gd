@@ -50,6 +50,7 @@ func physics_update(_delta: float) -> void:
 	character.last_direction = _direction
 	if character.last_direction == _direction:
 		character.animated_sprite_2d.play(anim_name + "_" + character.get_last_direction())
+		
 	
 	if !_can_see_player:
 		_timer -= _delta

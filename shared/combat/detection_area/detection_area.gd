@@ -20,7 +20,7 @@ func _on_body_exit(_b: Node2D) -> void:
 		player_exited.emit()
 		
 func _on_character_direction_changed(new_direction: Vector2) -> void:
-	match new_direction:
+	match new_direction.normalized().snapped(Vector2.ONE):
 		Vector2.DOWN:
 			rotation_degrees = 0
 		Vector2.UP:
