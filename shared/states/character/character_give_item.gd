@@ -1,20 +1,21 @@
 class_name CharacterGiveItem extends State
 
-@export var anim_name: String = "idle"
+@export var anim_name: String = "give_item"
 @export_category("AI")
-@export var state_duration_min: float = 0.5
-@export var state_duration_max: float = 1.5
+@export var state_duration: float = 2.0
 @export var next_state: State
+@onready var item_to_give: Sprite2D = $"../../ItemToGive"
 
 var _timer: float = 0.0
 
 func enter() -> void:
 	character.velocity = Vector2.ZERO
-	_timer = randf_range(state_duration_min, state_duration_max)
+	_timer = state_duration
 	character.animated_sprite_2d.play(anim_name + "_" + character.get_last_direction())
+	item_to_give.visible = true
 
 func exit() -> void:
-	pass
+	item_to_give.visible = false
 
 func physics_update(_delta: float) -> void:
 	_timer -= _delta
