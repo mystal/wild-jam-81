@@ -201,6 +201,7 @@ radius = 13.0
 motion_mode = 1
 script = ExtResource("1_0x5ob")
 state_machine = NodePath("StateMachine")
+speed = 100.0
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 metadata/_custom_type_script = "uid://ruxuxd0lvmh5"
 
@@ -219,14 +220,16 @@ metadata/_custom_type_script = "uid://ck546dr231fd3"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("4_f7n7x")
-state_duration_min = 5.0
-state_duration_max = 8.0
+state_duration_min = 1.0
+state_duration_max = 2.0
 next_state = NodePath("../Wander")
 metadata/_custom_type_script = "uid://mxkmp63b5r2q"
 
 [node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_p2p3q")
 anim_name = "walk"
+wander_speed = 75.0
+state_cycles_max = 2
 next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://dc8fwskd6age5"
 

@@ -26,6 +26,7 @@ LevelManager="*res://globals/level_manager.gd"
 PlayerManager="*res://globals/player_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Enums="*res://globals/enums.gd"
+Hotbar="*res://ui/hotbar/hotbar.tscn"
 
 [dialogue_manager]
 

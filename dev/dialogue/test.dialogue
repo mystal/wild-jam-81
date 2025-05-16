@@ -1,14 +1,9 @@
 ~ start
-Samurai: How many projects have you started and not finished?
-- Just a couple
-	Samurai: That's not so bad.
-- A lot
-	Samurai: Maybe you should finish one before starting another one.
-- I always finish my projects
-	Samurai: That's great!
-	Samurai: ...but how many is that?
-	- A few
-		Samurai: That's great!
-	- I haven't actually started any
-		Samurai: That's what I thought.
+Samurai: HELP!!! HELP!!! OUR SETTLER ARE UNDER ATTACK!
+- What happened?
+	Samurai: I'm not sure, we were just starting to dig ground and set up our tents when these monsters surrounded us!
+- Leave it to me!
+	Samurai: Thank you, Settler!
+- [Ignore]
+	Samurai: ...
 => END

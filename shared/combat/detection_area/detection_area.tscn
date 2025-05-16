@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cridwtoc2lw80"]
+
+[ext_resource type="Script" uid="uid://cf0ht61v67xjw" path="res://shared/combat/detection_area/detection_area.gd" id="1_c5icl"]
+
+[node name="DetectionArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_c5icl")
