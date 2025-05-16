@@ -1,5 +1,7 @@
 class_name StateMachine extends Node
 
+@export var initial_state: String
+
 var current_state: State = null
 var states: Dictionary = {}
 var player: Player = null
@@ -8,10 +10,10 @@ var character: Character = null
 #{"idle": Idle}
 func register_player(in_player: Player) -> void:
 	player = in_player
-	
+
 func register_character(in_character: Character) -> void:
 	character = in_character
-	
+
 
 func _ready() -> void:
 	await owner.ready
@@ -25,8 +27,10 @@ func _ready() -> void:
 			child.player = player
 			child.character = character
 
-	#default to idle state
-	if states.has("idle"):
+	if initial_state and states.has(initial_state):
+		change_state(initial_state)
+	elif states.has("idle"):
+		# Default to idle state if no other initial state provided
 		change_state("idle")
 
 func change_state(new_state_name: String) -> void:
