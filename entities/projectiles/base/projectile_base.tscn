@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://byspx14ishmha"]
+
+[ext_resource type="Script" uid="uid://ddqy2ify1tvth" path="res://entities/projectiles/base/projectile_base.gd" id="1_a00me"]
+[ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="3_ob6m8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6h5p"]
+radius = 8.06226
+
+[node name="ProjectileBase" type="Node2D"]
+script = ExtResource("1_a00me")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+autoplay = "travel"
+
+[node name="HitBox" parent="." instance=ExtResource("3_ob6m8")]
+
+[node name="HitBoxCollision" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_a6h5p")
+
+[connection signal="hit" from="HitBox" to="." method="_on_hit_box_hit"]
+
+[editable path="HitBox"]
