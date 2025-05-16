@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cngfnas11uiow"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cngfnas11uiow"]
 
 [ext_resource type="Script" uid="uid://b1k2bly1ejbrw" path="res://entities/items/item_data.gd" id="1_aq7g0"]
+[ext_resource type="Script" uid="uid://dyobnd2n4eqsr" path="res://entities/items/item_effects/item_effect.gd" id="1_jyjtn"]
 [ext_resource type="Texture2D" uid="uid://dqreormqq0woy" path="res://entities/items/mysterious_scroll/Scroll.png" id="2_elwl2"]
 
 [resource]
 script = ExtResource("1_aq7g0")
 name = "Mysterious Scroll"
-description = "A mysterious scroll, which you can not quite decipher. Try taking this to the resident Scribe, Jural."
+description = "A mysterious scroll, which you can not quite decipher it's contents of. Try taking this to Village Elder, Jural for more information."
 texture = ExtResource("2_elwl2")
+effects = Array[ExtResource("1_jyjtn")]([])
 metadata/_custom_type_script = "uid://b1k2bly1ejbrw"
