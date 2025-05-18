@@ -1,3 +1,76 @@
-[gd_scene format=3 uid="uid://bb5ceyptnjlvd"]
+[gd_scene load_steps=14 format=3 uid="uid://bb5ceyptnjlvd"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_pmw44"]
+[ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="2_5orr0"]
+[ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_c0krd"]
+[ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="2_ederv"]
+[ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="3_4fnu8"]
+[ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="3_c0krd"]
+[ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="4_5orr0"]
+[ext_resource type="Script" uid="uid://b54y6nn1q2ooa" path="res://shared/states/character/character_chase.gd" id="5_c0krd"]
+[ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="9_l7run"]
+[ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="10_h5kf4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5orr0"]
+size = Vector2(6, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7run"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5kf4"]
+radius = 6.0
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("1_pmw44")
+state_machine = NodePath("StateMachine")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_c0krd")
+animation = &"idle_down"
+autoplay = "idle_down"
+
+[node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5orr0")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_5orr0")]
+
+[node name="HurtBoxCollision" parent="HurtBox" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_l7run")
+
+[node name="HitBox" parent="." instance=ExtResource("3_c0krd")]
+
+[node name="HitBoxCollision" parent="HitBox" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_h5kf4")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_ederv")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_4fnu8")
+next_state = NodePath("../Wander")
+metadata/_custom_type_script = "uid://dnif5socsp5jq"
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_5orr0")
+anim_name = "walk"
+next_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://dnif5socsp5jq"
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("detection_area", "attack_area", "next_state")]
+script = ExtResource("5_c0krd")
+anim_name = "walk"
+detection_area = NodePath("")
+attack_area = NodePath("")
+state_aggro_duration = 1.0
+next_state = NodePath("../Idle")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("9_l7run")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("10_h5kf4")
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
