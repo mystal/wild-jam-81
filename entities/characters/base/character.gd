@@ -4,8 +4,12 @@ class_name Character extends CharacterBody2D
 @export var speed: float = 30.0
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var faction: Enums.Faction
+@export var death_animation: AnimatedSprite2D
 
 signal direction_changed(new_direction: Vector2)
+
+
+var invulnerable: bool = true
 
 var last_direction = Vector2.DOWN:
 	set(_v):

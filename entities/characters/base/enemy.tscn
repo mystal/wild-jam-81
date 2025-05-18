@@ -1,16 +1,67 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb5ceyptnjlvd"]
+[gd_scene load_steps=23 format=3 uid="uid://bb5ceyptnjlvd"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_pmw44"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="2_5orr0"]
 [ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_c0krd"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="2_ederv"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="3_4fnu8"]
+[ext_resource type="Texture2D" uid="uid://cvho18e823kut" path="res://vfx/smoke/SpriteSheet.png" id="3_avv8u"]
 [ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="3_c0krd"]
 [ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="4_5orr0"]
 [ext_resource type="Script" uid="uid://b54y6nn1q2ooa" path="res://shared/states/character/character_chase.gd" id="5_c0krd"]
 [ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="9_l7run"]
 [ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="10_h5kf4"]
 [ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="11_y6eh2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37u80"]
+atlas = ExtResource("3_avv8u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7y2r"]
+atlas = ExtResource("3_avv8u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o043a"]
+atlas = ExtResource("3_avv8u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftig2"]
+atlas = ExtResource("3_avv8u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5qr2"]
+atlas = ExtResource("3_avv8u")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orp2i"]
+atlas = ExtResource("3_avv8u")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6eh2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37u80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7y2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o043a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftig2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5qr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orp2i")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5orr0"]
 size = Vector2(6, 8)
@@ -29,6 +80,13 @@ state_machine = NodePath("StateMachine")
 sprite_frames = ExtResource("2_c0krd")
 animation = &"idle_down"
 autoplay = "idle_down"
+
+[node name="Death" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_y6eh2")
+animation = &"death"
+frame = 5
+frame_progress = 1.0
 
 [node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5orr0")
@@ -79,6 +137,8 @@ script = ExtResource("10_h5kf4")
 script = ExtResource("11_y6eh2")
 max_health = 10.0
 metadata/_custom_type_script = "uid://vlpyllrtqxqb"
+
+[connection signal="animation_finished" from="Death" to="." method="_on_death_animation_finished"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

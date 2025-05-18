@@ -1,7 +1,6 @@
 class_name CharacterHit extends State
 @onready var sprite: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
-@export var anim_name: String = "hit"
 @export var knockback_speed: float = 200.0
 @export var decelerate_speed: float = 10.0
 
@@ -14,19 +13,21 @@ var _direction: Vector2
 var _animation_finished: bool
 
 func enter() -> void:
+	character.invulnerable = true
 	_animation_finished = false
-	#_direction = DIRECTIONS.pick_random()
+	_direction = character.global_position.direction_to(PlayerManager.player.global_position)
 	character.last_direction = _direction
 	character.velocity = _direction * knockback_speed
 	flash()
 	shake()
 
 func exit() -> void:
+	character.invulnerable = false
 	pass
 
 func physics_update(_delta: float) -> void:
 	if _animation_finished == true:
-		state_machine.change_state(next_state.name)
+		state_machine.change_state(next_state.name.to_lower())
 	character.velocity -= character.velocity * decelerate_speed * _delta
 		
 func flash(time = 0.2):
@@ -40,6 +41,6 @@ func shake(intensity := 2.0,time := 0.1):
 	tween.tween_property(sprite,"position",Vector2(-1,-1)*intensity,time/3)
 	tween.tween_property(sprite,"position",Vector2.LEFT*intensity,time/3)
 	tween.tween_property(sprite,"position",Vector2.ZERO,time/3)
-	_animation_finished
+	_animation_finished = true
 
 		

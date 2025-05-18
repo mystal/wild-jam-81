@@ -6,10 +6,14 @@ extends Character
 func _ready() -> void:
 	super._ready()
 	faction = Enums.Faction.Enemy
+	invulnerable = false
+	
 
 func _on_hurt_box_damaged(damage: float) -> void:
+	if invulnerable == true:
+		return
 	$Health.take_damage(damage)
 	state_machine.change_state("hit")
 
 func _on_health_died() -> void:
-	queue_free()
+	state_machine.change_state("death")

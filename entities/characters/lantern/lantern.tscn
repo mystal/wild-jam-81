@@ -1,14 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5xtmm74et6bb"]
+[gd_scene load_steps=20 format=3 uid="uid://b5xtmm74et6bb"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_x0uxh"]
 [ext_resource type="Texture2D" uid="uid://dd2go2va1vtjt" path="res://entities/characters/lantern/SpriteSheet.png" id="2_b0yhu"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="3_7ycmx"]
+[ext_resource type="SpriteFrames" uid="uid://c166jfd6p2ni" path="res://shared/sprite_frames/death_animation.tres" id="3_alnrg"]
 [ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="4_2xxlf"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="5_iokn8"]
 [ext_resource type="Script" uid="uid://cw4a41i8ocv03" path="res://entities/characters/lantern/lantern_attack.gd" id="6_61d4f"]
 [ext_resource type="PackedScene" uid="uid://dvn7w24ieqoc6" path="res://entities/projectiles/shuriken/shuriken_projectile.tscn" id="7_b0yhu"]
 [ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="8_ly7ea"]
 [ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="8_psesv"]
+[ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="9_vtk75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ly7ea"]
 atlas = ExtResource("2_b0yhu")
@@ -55,18 +57,23 @@ size = Vector2(8, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3gm"]
 size = Vector2(8, 12)
 
-[node name="Lantern" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
+[node name="Lantern" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d", "death_animation")]
 motion_mode = 1
 script = ExtResource("1_x0uxh")
 state_machine = NodePath("StateMachine")
 speed = 0.0
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 faction = 1
+death_animation = NodePath("Death")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nqag")
 animation = &"idle_down"
 autoplay = "idle_down"
+
+[node name="Death" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("3_alnrg")
 
 [node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6nqag")
@@ -92,8 +99,13 @@ metadata/_custom_type_script = "uid://cw4a41i8ocv03"
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_ly7ea")
+knockback_speed = 1.0
 next_state = NodePath("../LanternAttack")
 metadata/_custom_type_script = "uid://dgluxftrg7l47"
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("9_vtk75")
+metadata/_custom_type_script = "uid://b1hgtkxjsv8yd"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_psesv")
