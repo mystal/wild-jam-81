@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" load_steps=3 format=3 uid="uid://detlin74j2y4m"]
+
+[ext_resource type="PackedScene" uid="uid://b5xtmm74et6bb" path="res://entities/characters/lantern/lantern.tscn" id="1_csiai"]
+[ext_resource type="Script" uid="uid://phe2317jl875" path="res://globals/spawners/enemy_spawn_data.gd" id="2_oaggs"]
+
+[resource]
+script = ExtResource("2_oaggs")
+scene = ExtResource("1_csiai")
+spawn_delay = 0.5
+max_number = 2
+metadata/_custom_type_script = "uid://phe2317jl875"

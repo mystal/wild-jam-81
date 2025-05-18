@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d0e0xsagl5mao"]
+[gd_scene load_steps=10 format=4 uid="uid://d0e0xsagl5mao"]
 
 [ext_resource type="Script" uid="uid://b5vkxrumoxb7f" path="res://dev/levels/level.gd" id="1_pylhm"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_tmhc1"]
@@ -6,30 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="3_jkgu2"]
 [ext_resource type="PackedScene" uid="uid://cfx3f84nivbrk" path="res://globals/spawners/enemy_spawner.tscn" id="5_w81u0"]
 [ext_resource type="Script" uid="uid://phe2317jl875" path="res://globals/spawners/enemy_spawn_data.gd" id="6_s5aot"]
-[ext_resource type="PackedScene" uid="uid://hyehrgwxiqbd" path="res://entities/characters/slime/slime_blue.tscn" id="7_0t6ko"]
-[ext_resource type="PackedScene" uid="uid://b5xtmm74et6bb" path="res://entities/characters/lantern/lantern.tscn" id="8_lmcox"]
-[ext_resource type="PackedScene" uid="uid://6fgjc66wuimr" path="res://entities/characters/eye/evil_eye.tscn" id="9_0t6ko"]
-
-[sub_resource type="Resource" id="Resource_8k2my"]
-script = ExtResource("6_s5aot")
-scene = ExtResource("7_0t6ko")
-spawn_delay = 1
-max_number = 2
-metadata/_custom_type_script = "uid://phe2317jl875"
-
-[sub_resource type="Resource" id="Resource_jehg1"]
-script = ExtResource("6_s5aot")
-scene = ExtResource("8_lmcox")
-spawn_delay = 0
-max_number = 1
-metadata/_custom_type_script = "uid://phe2317jl875"
-
-[sub_resource type="Resource" id="Resource_lmcox"]
-script = ExtResource("6_s5aot")
-scene = ExtResource("9_0t6ko")
-spawn_delay = 1
-max_number = 3
-metadata/_custom_type_script = "uid://phe2317jl875"
+[ext_resource type="Resource" uid="uid://b77qb4e7ny0mg" path="res://globals/spawners/enemy/slime_blue_spawn_data.tres" id="7_0t6ko"]
+[ext_resource type="Resource" uid="uid://detlin74j2y4m" path="res://globals/spawners/enemy/lantern_spawn_data.tres" id="8_lmcox"]
+[ext_resource type="Resource" uid="uid://ck2jleomrxey7" path="res://globals/spawners/enemy/evil_eye_spawn_data.tres" id="9_8k2my"]
 
 [node name="TestLevel2" type="Node2D"]
 script = ExtResource("1_pylhm")
@@ -69,4 +48,4 @@ size = 8
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("5_w81u0")]
 position = Vector2(160, 88)
-enemies = Array[ExtResource("6_s5aot")]([SubResource("Resource_8k2my"), SubResource("Resource_jehg1"), SubResource("Resource_lmcox")])
+enemies = Array[ExtResource("6_s5aot")]([ExtResource("7_0t6ko"), ExtResource("8_lmcox"), ExtResource("9_8k2my")])

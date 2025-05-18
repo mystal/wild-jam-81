@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" load_steps=3 format=3 uid="uid://b77qb4e7ny0mg"]
+
+[ext_resource type="PackedScene" uid="uid://hyehrgwxiqbd" path="res://entities/characters/slime/slime_blue.tscn" id="1_iflse"]
+[ext_resource type="Script" uid="uid://phe2317jl875" path="res://globals/spawners/enemy_spawn_data.gd" id="2_1iwj6"]
+
+[resource]
+script = ExtResource("2_1iwj6")
+scene = ExtResource("1_iflse")
+spawn_delay = 0.5
+max_number = 4
+metadata/_custom_type_script = "uid://phe2317jl875"

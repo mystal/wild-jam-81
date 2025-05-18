@@ -9,11 +9,13 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		sprite_2d.visibile = true
 	
+	randomize()
 	for enemy_data in enemies:
-		for count in enemy_data.max_number:
+		var random_enemy_count = randi_range(1, enemy_data.max_number)
+		for count in random_enemy_count:
+			await get_tree().create_timer(enemy_data.spawn_delay).timeout
 			var enemy = enemy_data.scene.instantiate() as Character
 			enemy.position = generate_random_position()
-			await get_tree().create_timer(enemy_data.spawn_delay).timeout
 			get_tree().current_scene.add_child(enemy)
 
 func generate_random_position() -> Vector2:
