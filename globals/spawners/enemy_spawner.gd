@@ -10,10 +10,11 @@ func _ready() -> void:
 		sprite_2d.visibile = true
 	
 	for enemy_data in enemies:
-		var enemy = enemy_data.scene.instantiate() as Character
-		enemy.position = generate_random_position()
-		await get_tree().create_timer(enemy_data.spawn_delay).timeout
-		get_tree().current_scene.add_child(enemy)
+		for count in enemy_data.max_number:
+			var enemy = enemy_data.scene.instantiate() as Character
+			enemy.position = generate_random_position()
+			await get_tree().create_timer(enemy_data.spawn_delay).timeout
+			get_tree().current_scene.add_child(enemy)
 
 func generate_random_position() -> Vector2:
 	##assume collision shape is a circle:
