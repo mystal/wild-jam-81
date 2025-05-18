@@ -1,13 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://6fgjc66wuimr"]
+[gd_scene load_steps=35 format=3 uid="uid://6fgjc66wuimr"]
 
 [ext_resource type="Texture2D" uid="uid://dwa1120kyklxd" path="res://entities/characters/eye/Eye.png" id="1_5uapc"]
-[ext_resource type="Script" uid="uid://cv53o26o4hrdo" path="res://entities/characters/eye/evil_eye.gd" id="1_pjvrm"]
+[ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_hrkhv"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_opgvx"]
 [ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="4_3s3gm"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_g6cxc"]
 [ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="5_huq3g"]
 [ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="6_gt231"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="7_5mdp6"]
+[ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="8_d1nb8"]
+[ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="9_hrkhv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjvrm"]
 atlas = ExtResource("1_5uapc")
@@ -203,10 +205,9 @@ size = Vector2(8, 12)
 
 [node name="EvilEye" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d")]
 motion_mode = 1
-script = ExtResource("1_pjvrm")
+script = ExtResource("1_hrkhv")
 state_machine = NodePath("StateMachine")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
-faction = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nqag")
@@ -228,6 +229,7 @@ shape = SubResource("RectangleShape2D_3s3gm")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_opgvx")
+initial_state = "idle"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("4_g6cxc")
@@ -239,6 +241,15 @@ script = ExtResource("5_huq3g")
 anim_name = "move"
 next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://dnif5socsp5jq"
+
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_d1nb8")
+next_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://dgluxftrg7l47"
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("9_hrkhv")
+metadata/_custom_type_script = "uid://b1hgtkxjsv8yd"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_gt231")

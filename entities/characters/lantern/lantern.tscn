@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5xtmm74et6bb"]
+[gd_scene load_steps=18 format=3 uid="uid://b5xtmm74et6bb"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_x0uxh"]
 [ext_resource type="Texture2D" uid="uid://dd2go2va1vtjt" path="res://entities/characters/lantern/SpriteSheet.png" id="2_b0yhu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="5_iokn8"]
 [ext_resource type="Script" uid="uid://cw4a41i8ocv03" path="res://entities/characters/lantern/lantern_attack.gd" id="6_61d4f"]
 [ext_resource type="PackedScene" uid="uid://dvn7w24ieqoc6" path="res://entities/projectiles/shuriken/shuriken_projectile.tscn" id="7_b0yhu"]
+[ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="8_ly7ea"]
 [ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="8_psesv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ly7ea"]
@@ -88,6 +89,11 @@ initial_state = "lanternattack"
 script = ExtResource("6_61d4f")
 projectile = ExtResource("7_b0yhu")
 metadata/_custom_type_script = "uid://cw4a41i8ocv03"
+
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_ly7ea")
+next_state = NodePath("../LanternAttack")
+metadata/_custom_type_script = "uid://dgluxftrg7l47"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_psesv")

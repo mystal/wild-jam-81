@@ -40,5 +40,6 @@ func shake(intensity := 2.0,time := 0.1):
 	tween.tween_property(sprite,"position",Vector2(-1,-1)*intensity,time/3)
 	tween.tween_property(sprite,"position",Vector2.LEFT*intensity,time/3)
 	tween.tween_property(sprite,"position",Vector2.ZERO,time/3)
+	_animation_finished
 
 		

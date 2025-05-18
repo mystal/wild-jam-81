@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb5ceyptnjlvd"]
+[gd_scene load_steps=15 format=3 uid="uid://bb5ceyptnjlvd"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_pmw44"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="2_5orr0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b54y6nn1q2ooa" path="res://shared/states/character/character_chase.gd" id="5_c0krd"]
 [ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="9_l7run"]
 [ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="10_h5kf4"]
+[ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="11_y6eh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5orr0"]
 size = Vector2(6, 8)
@@ -46,6 +47,7 @@ shape = SubResource("CircleShape2D_h5kf4")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_ederv")
+initial_state = "idle"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("3_4fnu8")
@@ -66,11 +68,17 @@ attack_area = NodePath("")
 state_aggro_duration = 1.0
 next_state = NodePath("../Idle")
 
-[node name="Hit" type="Node" parent="StateMachine"]
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("9_l7run")
+next_state = NodePath("../Idle")
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("10_h5kf4")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("11_y6eh2")
+max_health = 10.0
+metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

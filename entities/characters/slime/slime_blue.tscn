@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://hyehrgwxiqbd"]
+[gd_scene load_steps=16 format=3 uid="uid://hyehrgwxiqbd"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_jvo1v"]
 [ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_li0pj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="8_viemv"]
 [ext_resource type="Script" uid="uid://b54y6nn1q2ooa" path="res://shared/states/character/character_chase.gd" id="9_jvo1v"]
 [ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="10_xxsm4"]
+[ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="11_viemv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nqag"]
 size = Vector2(6, 8)
@@ -79,9 +80,14 @@ attack_area = NodePath("../../HitBox")
 state_aggro_duration = 1.0
 next_state = NodePath("../Idle")
 
-[node name="Hit" type="Node" parent="StateMachine"]
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_xxsm4")
+next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://dgluxftrg7l47"
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("11_viemv")
+metadata/_custom_type_script = "uid://b1hgtkxjsv8yd"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_viemv")
