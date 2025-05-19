@@ -23,6 +23,8 @@ var current_health: float:
 	get():
 		return $Health.current
 
+var invulnerable: bool = false
+
 func _ready() -> void:
 	PlayerManager.register(self)
 	state_machine.register_player(self)
@@ -65,12 +67,17 @@ func get_last_direction() -> String:
 	else:
 		return "down"
 
-func _on_hurt_box_damaged(damage:float) -> void:
-	$Health.take_damage(damage)
+func _on_hurt_box_damaged(hit_box: HitBox) -> void:
+	if invulnerable == true:
+		return
+	$Health.take_damage(hit_box.damage)
+	state_machine.change_state("hit")
 		
 func update_hp(amount: int) -> void:
 	$Health.heal(amount)
 	#update HUD here
-		
+func _on_health_died() -> void:
+	state_machine.change_state("death")
+	
 func cast_spell(item_effect: ItemEffect) -> void:
 	spell_manager.cast_spell(item_effect)

@@ -6,19 +6,21 @@ class_name CharacterDeath extends State
 
 const DIRECTIONS = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
+var _damage_position: Vector2
 var _direction: Vector2
 
 func enter() -> void:
 	character.death_animation.animation_finished.connect(_on_death_animation_finished)
 	character.invulnerable = true
-	_direction = character.global_position.direction_to(PlayerManager.player.global_position)
+	_damage_position = character.hurt_box.global_position
+	_direction = character.global_position.direction_to(_damage_position)
 	character.last_direction = _direction
 	character.velocity = _direction * knockback_speed
 	character.death_animation.visible = true
 	character.death_animation.play("death")
 
 func exit() -> void:
-	character.death_animation
+	pass
 
 func physics_update(_delta: float) -> void:
 	character.velocity -= character.velocity * decelerate_speed * _delta

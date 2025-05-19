@@ -9,13 +9,15 @@ class_name CharacterHit extends State
 
 const DIRECTIONS = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
+var _damage_position: Vector2
 var _direction: Vector2
 var _animation_finished: bool
 
 func enter() -> void:
 	character.invulnerable = true
 	_animation_finished = false
-	_direction = character.global_position.direction_to(PlayerManager.player.global_position)
+	_damage_position = character.hurt_box.global_position
+	_direction = character.global_position.direction_to(_damage_position)
 	character.last_direction = _direction
 	character.velocity = _direction * knockback_speed
 	flash()

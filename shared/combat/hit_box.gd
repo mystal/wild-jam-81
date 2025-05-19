@@ -21,5 +21,5 @@ func _should_overlap(hurt_box: HurtBox) -> bool:
 func _on_area_entered(area: Area2D) -> void:
 	var hurt_box := area as HurtBox
 	if _should_overlap(hurt_box):
-		hurt_box.take_damage(damage)
+		hurt_box.take_damage(self)
 		hit.emit(hurt_box)

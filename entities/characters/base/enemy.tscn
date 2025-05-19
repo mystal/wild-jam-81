@@ -85,6 +85,7 @@ max_health = 10.0
 metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 
 [connection signal="animation_finished" from="Death" to="." method="_on_death_animation_finished"]
+[connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]
