@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://hyehrgwxiqbd"]
+[gd_scene load_steps=17 format=3 uid="uid://hyehrgwxiqbd"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_jvo1v"]
 [ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_li0pj"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="3_jvo1v"]
-[ext_resource type="Texture2D" uid="uid://cvho18e823kut" path="res://vfx/smoke/SpriteSheet.png" id="3_o86wm"]
+[ext_resource type="SpriteFrames" uid="uid://c166jfd6p2ni" path="res://shared/sprite_frames/death_animation.tres" id="3_o86wm"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_v50ju"]
 [ext_resource type="PackedScene" uid="uid://cridwtoc2lw80" path="res://shared/combat/detection_area/detection_area.tscn" id="3_xxsm4"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_jvo1v"]
@@ -13,56 +13,6 @@
 [ext_resource type="Script" uid="uid://b54y6nn1q2ooa" path="res://shared/states/character/character_chase.gd" id="9_jvo1v"]
 [ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="10_xxsm4"]
 [ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="11_viemv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37u80"]
-atlas = ExtResource("3_o86wm")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7y2r"]
-atlas = ExtResource("3_o86wm")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o043a"]
-atlas = ExtResource("3_o86wm")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ftig2"]
-atlas = ExtResource("3_o86wm")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5qr2"]
-atlas = ExtResource("3_o86wm")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_orp2i"]
-atlas = ExtResource("3_o86wm")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ebd82"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37u80")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k7y2r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o043a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ftig2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w5qr2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_orp2i")
-}],
-"loop": false,
-"name": &"death",
-"speed": 10.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nqag"]
 size = Vector2(6, 8)
@@ -90,11 +40,8 @@ frame_progress = 0.469875
 
 [node name="Death" type="AnimatedSprite2D" parent="."]
 visible = false
-sprite_frames = SubResource("SpriteFrames_ebd82")
+sprite_frames = ExtResource("3_o86wm")
 animation = &"death"
-autoplay = "death"
-frame = 5
-frame_progress = 1.0
 
 [node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6nqag")

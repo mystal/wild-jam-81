@@ -74,6 +74,7 @@ autoplay = "idle_down"
 [node name="Death" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = ExtResource("3_alnrg")
+animation = &"death"
 
 [node name="WorldCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6nqag")
