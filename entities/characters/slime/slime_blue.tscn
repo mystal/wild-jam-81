@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://hyehrgwxiqbd"]
+[gd_scene load_steps=20 format=3 uid="uid://hyehrgwxiqbd"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_jvo1v"]
 [ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_li0pj"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://b54y6nn1q2ooa" path="res://shared/states/character/character_chase.gd" id="9_jvo1v"]
 [ext_resource type="Script" uid="uid://dgluxftrg7l47" path="res://shared/states/character/character_hit.gd" id="10_xxsm4"]
 [ext_resource type="Script" uid="uid://b1hgtkxjsv8yd" path="res://shared/states/character/character_death.gd" id="11_viemv"]
+[ext_resource type="Script" uid="uid://d01s17vurgbsb" path="res://shared/drops/drop_data.gd" id="13_ebd82"]
+[ext_resource type="Resource" uid="uid://d3id6v3j1hbyr" path="res://entities/items/health_potion/health_potion.tres" id="14_jh4fl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nqag"]
 size = Vector2(6, 8)
@@ -22,6 +24,14 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_li0pj"]
 radius = 6.0
+
+[sub_resource type="Resource" id="Resource_0d3gi"]
+script = ExtResource("13_ebd82")
+item = ExtResource("14_jh4fl")
+drop_chance = 33.0
+min_amount = 1
+max_amount = 1
+metadata/_custom_type_script = "uid://d01s17vurgbsb"
 
 [node name="SlimeBlue" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animated_sprite_2d", "death_animation")]
 collision_layer = 5
@@ -95,6 +105,7 @@ metadata/_custom_type_script = "uid://dgluxftrg7l47"
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("11_viemv")
+drops = Array[ExtResource("13_ebd82")]([SubResource("Resource_0d3gi")])
 metadata/_custom_type_script = "uid://b1hgtkxjsv8yd"
 
 [node name="Health" type="Node" parent="."]
