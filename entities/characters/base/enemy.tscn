@@ -66,11 +66,9 @@ anim_name = "walk"
 next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://dnif5socsp5jq"
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("detection_area", "attack_area", "next_state")]
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_c0krd")
 anim_name = "walk"
-detection_area = NodePath("")
-attack_area = NodePath("")
 state_aggro_duration = 1.0
 next_state = NodePath("../Idle")
 

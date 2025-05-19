@@ -27,6 +27,7 @@ PlayerManager="*res://globals/player_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Enums="*res://globals/enums.gd"
 Hotbar="*res://ui/hotbar/hotbar.tscn"
+MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
 [dialogue_manager]
 
@@ -40,7 +41,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 

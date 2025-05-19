@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://dg0k622otoswy"]
+[gd_scene load_steps=7 format=4 uid="uid://dg0k622otoswy"]
 
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_j8lga"]
 [ext_resource type="Script" uid="uid://b5vkxrumoxb7f" path="res://dev/levels/level.gd" id="1_qkdjs"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_7m31a"]
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="2_c6mkj"]
 [ext_resource type="PackedScene" uid="uid://ciien055wqh0c" path="res://entities/characters/elder/village_elder.tscn" id="3_61kg8"]
 [ext_resource type="PackedScene" uid="uid://bfblo2p125v8s" path="res://dev/levels/transition/level_transition.tscn" id="3_cyofq"]
 
 [node name="TestLevel4" type="Node2D"]
 script = ExtResource("1_qkdjs")
+
+[node name="RoomInstance" parent="." instance=ExtResource("2_7m31a")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
