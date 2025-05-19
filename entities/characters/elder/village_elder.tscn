@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_1sri1"]
 [ext_resource type="Texture2D" uid="uid://cfm0pnnirv8w8" path="res://ui/dialogue/dialogue_icon.png" id="3_8so2d"]
 [ext_resource type="Script" uid="uid://mxkmp63b5r2q" path="res://shared/states/character/character_idle.gd" id="4_15ak1"]
-[ext_resource type="Texture2D" uid="uid://dqreormqq0woy" path="res://entities/items/mysterious_scroll/Scroll.png" id="4_mxbeh"]
 [ext_resource type="Script" uid="uid://dc8fwskd6age5" path="res://shared/states/character/character_wander.gd" id="5_e1myb"]
 [ext_resource type="PackedScene" uid="uid://cspjykhvnnvlw" path="res://shared/interaction/intereactable.tscn" id="6_d46lb"]
 [ext_resource type="Resource" uid="uid://drllaiynxwcuc" path="res://dev/dialogue/elder.dialogue" id="7_4niw1"]
+[ext_resource type="Resource" uid="uid://cngfnas11uiow" path="res://entities/items/mysterious_scroll/mysterious_scroll.tres" id="8_2o7ie"]
 [ext_resource type="Script" uid="uid://xue113a8ey8h" path="res://shared/states/character/character_give_item.gd" id="8_lxsmd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n1pn"]
@@ -130,12 +130,12 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_8so2d")
 }],
-"loop": true,
+"loop": false,
 "name": &"item_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -230,18 +230,13 @@ visible = false
 position = Vector2(0, -16)
 texture = ExtResource("3_8so2d")
 
-[node name="ItemToGive" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-1.19209e-07, -16)
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("4_mxbeh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_3nji8")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_1sri1")
+initial_state = "idle"
 metadata/_custom_type_script = "uid://ck546dr231fd3"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
@@ -260,6 +255,8 @@ metadata/_custom_type_script = "uid://dc8fwskd6age5"
 
 [node name="GiveItem" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_lxsmd")
+item_to_give = ExtResource("8_2o7ie")
+state_duration = 3.0
 next_state = NodePath("../Idle")
 
 [node name="Intereactable" parent="." instance=ExtResource("6_d46lb")]

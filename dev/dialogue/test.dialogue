@@ -4,6 +4,7 @@ Samurai: HELP!!! HELP!!! OUR SETTLERS ARE UNDER ATTACK!
 	Samurai: I'm not sure, we were just starting to dig ground and set up our tents when these monsters surrounded us!
 	- How can I help?
 		Samurai: Start by clearing out this area, and seeking out the [b]Village Elder[/b] in the Forest Clearing as he was researching these creatures on our expedition!
+		do NPC
 	- Got it!
 - Leave it to me!
 	Samurai: Thank you, Settler! Good Luck!
