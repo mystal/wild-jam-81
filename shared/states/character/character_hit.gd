@@ -18,7 +18,7 @@ func enter() -> void:
 	_animation_finished = false
 	_damage_position = character.hurt_box.global_position
 	_direction = character.global_position.direction_to(_damage_position)
-	character.last_direction = _direction
+	# character.last_direction = _direction
 	character.velocity = _direction * knockback_speed
 	flash()
 	shake()

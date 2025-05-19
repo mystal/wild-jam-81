@@ -5,7 +5,7 @@ signal direction_changed(new_direction: Vector2)
 @export var speed := 300.0
 @export_range(1, 20, 0.5) var decelerate_speed := 5.0
 @export var faction: Enums.Faction
-
+@onready var hurt_box: HurtBox = $HurtBox
 var last_direction = Vector2.DOWN
 var direction = Vector2.ZERO
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -78,6 +78,6 @@ func update_hp(amount: int) -> void:
 	#update HUD here
 func _on_health_died() -> void:
 	state_machine.change_state("death")
-	
+
 func cast_spell(item_effect: ItemEffect) -> void:
 	spell_manager.cast_spell(item_effect)

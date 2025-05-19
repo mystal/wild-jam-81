@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://di4r6bs6yv2t2"]
+[gd_scene load_steps=43 format=3 uid="uid://di4r6bs6yv2t2"]
 
 [ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/characters/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/characters/player/SpriteSheet.png" id="1_symyc"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dvn7w24ieqoc6" path="res://entities/projectiles/shuriken/shuriken_projectile.tscn" id="10_wvtmh"]
 [ext_resource type="Script" uid="uid://vlpyllrtqxqb" path="res://shared/health/health.gd" id="11_0s3gd"]
 [ext_resource type="Script" uid="uid://bylt2h5v53gu3" path="res://shared/combat/spells/spell_manager.gd" id="11_5otfs"]
+[ext_resource type="Script" uid="uid://3ge5ncclvplv" path="res://shared/states/hit.gd" id="11_mnavw"]
+[ext_resource type="Script" uid="uid://c36tcre2mg6ao" path="res://shared/states/death.gd" id="12_nuxbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_221hk"]
 atlas = ExtResource("1_symyc")
@@ -338,6 +340,15 @@ metadata/_custom_type_script = "uid://ycabutn6ry65"
 [node name="ShootProjectile" type="Node" parent="StateMachine"]
 script = ExtResource("9_bectd")
 projectile = ExtResource("10_wvtmh")
+
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_mnavw")
+next_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://3ge5ncclvplv"
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("12_nuxbo")
+metadata/_custom_type_script = "uid://c36tcre2mg6ao"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("11_0s3gd")

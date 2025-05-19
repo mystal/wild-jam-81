@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs86vnh1cvnp2"]
-
-[ext_resource type="Script" uid="uid://dnif5socsp5jq" path="res://shared/state_machine/state.gd" id="1_jrqyd"]
-
-[node name="Hit" type="Node"]
-script = ExtResource("1_jrqyd")
-metadata/_custom_type_script = "uid://dnif5socsp5jq"
