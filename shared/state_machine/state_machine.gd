@@ -1,6 +1,7 @@
 class_name StateMachine extends Node
 
 @export var initial_state: String
+@export var dialogue_resource: DialogueResource
 
 var current_state: State = null
 var states: Dictionary = {}

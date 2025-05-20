@@ -1,13 +1,18 @@
 ~ start
 Elder: [[Hi|Hello|Howdy]], Settler!
-- Settlers are under attack!
-	Elder: I see, and they can't defend themselves?
-	- I don't think so!
-		Elder: Here, I found this artifact buried in some ruins - maybe this will help scare them off.
-		do 
-	- They should be able to
-		Elder: Take this to them - it should help. I found it in some ruins in the North of the forest.
-- Tell me about these monsters
-	Elder: I don't know too much yet, but when loooking around this Clearing, I found some strange places which looked to be ancient burial sites...
+
+if GameManager.given_mysterious_scroll == false:
+	- Settlers are under attack!
+		Elder: I see, and they can't defend themselves?
+		- I don't think so!
+			Elder: Here, I found this artifact buried in some ruins - maybe this will help scare them off.
+			do elder.give_item()
+		- They should be able to
+			Elder: Take this to them - it should help. I found it in some ruins in the North of the forest.
+		- Tell me about these monsters
+			Elder: I don't know too much yet, but when loooking around this Clearing, I found some strange places which looked to be ancient burial sites...
+
+else:
+	Elder: Take that scroll over to the Settlers and see if it can be of help!
 Elder: Best of luck!
 => END

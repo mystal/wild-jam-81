@@ -21,10 +21,11 @@ driver/enable_input=true
 
 [autoload]
 
+GameManager="*res://globals/game_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SceneTransition="*res://globals/scene_transitions/scene_transition.tscn"
 LevelManager="*res://globals/level_manager.gd"
 PlayerManager="*res://globals/player_manager.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Enums="*res://globals/enums.gd"
 Hotbar="*res://ui/hotbar/hotbar.tscn"
 MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
