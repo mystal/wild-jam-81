@@ -1,41 +1,48 @@
-class_name HotbarSlotUI extends Button
+class_name HotBarSlotUI extends Button
 
-var slot_data: SlotData : set = set_slot_data
-
-@onready var quantity_label: Label = $QuantityLabel
-@onready var item_texture_rect: TextureRect = $ItemTextureRect
-@onready var item_description_label: Label = $"../../ItemDescriptionLabel"
-
+@onready var background: Sprite2D = $Background
+@onready var item_stack_ui: ItemStackUI = $CenterContainer/Panel
+##Reference to the player's inventory data
+@onready var inventory: InventoryData = PlayerManager.INVENTORY_DATA
 @export var slot_number: int = 0
-
+@onready var container: CenterContainer = $CenterContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	item_texture_rect.texture = null
-	quantity_label.text = ""
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
+    mouse_entered.connect(_on_mouse_entered)
+    mouse_exited.connect(_on_mouse_exited)
+
+func _on_mouse_entered() -> void:
+    pass
+
+func _on_mouse_exited() -> void:
+    pass
 
 func _input(event: InputEvent) -> void:
-	if (event.is_action_pressed("hotbar_" + str(slot_number))):
-		if slot_data:
-			if slot_data.item_data:
-				var was_used = slot_data.item_data.use()
-				if was_used == false:
-					return
-				slot_data.quantity -= 1
-				quantity_label.text = str(slot_data.quantity)
+    if (event.is_action_pressed("hotbar_" + str(slot_number))):
+        if item_stack_ui.inventory_slot.item == null:
+            return
+        if item_stack_ui.inventory_slot:
+            if item_stack_ui.inventory_slot.item:
+                var was_used = item_stack_ui.inventory_slot.item.use()
+                if was_used == false:
+                    return
+                item_stack_ui.inventory_slot.quantity -= 1
+                if item_stack_ui.inventory_slot.quantity <= 0:
+                    var item = item_stack_ui
+                    inventory.remove_slot(item_stack_ui.inventory_slot)
+                    container.remove_child(item)
+                    background.frame = 0
+                else:
+                    item_stack_ui.update()
+                # quantity_label.text = str(item_stack_ui.inventory_slot.quantity)
 
-func set_slot_data(value: SlotData) -> void:
-	slot_data = value
-	if slot_data == null:
-		return
-	item_texture_rect.texture = slot_data.item_data.texture
-	quantity_label.text = str(slot_data.quantity)
-	
-func _on_mouse_entered() -> void:
-	if slot_data != null:
-		if slot_data.item_data != null:
-			item_description_label.text = slot_data.item_data.description
-	
-func _on_mouse_exited() -> void:
-	item_description_label.text = ""
+func update_to_slot(slot: InventorySlot) -> void:
+    if slot.item == null:
+        item_stack_ui.visible = false
+        background.frame = 0
+        return
+    
+    item_stack_ui.inventory_slot = slot
+    item_stack_ui.update()
+    item_stack_ui.visible = true
+    background.frame = 1

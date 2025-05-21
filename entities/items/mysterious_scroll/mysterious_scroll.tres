@@ -9,5 +9,7 @@ script = ExtResource("1_aq7g0")
 name = "Mysterious Scroll"
 description = "A mysterious scroll, which you can not quite decipher it's contents of. Try taking this to Village Elder, for more information."
 texture = ExtResource("2_elwl2")
+max_stack = 1
+unique = true
 effects = Array[ExtResource("1_jyjtn")]([])
 metadata/_custom_type_script = "uid://b1k2bly1ejbrw"

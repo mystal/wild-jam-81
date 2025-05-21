@@ -3,6 +3,8 @@ class_name ItemData extends Resource
 @export var name: String = ""
 @export_multiline var description: String = ""
 @export var texture: Texture2D
+@export var max_stack: int = 99
+@export var unique: bool = false
 
 @export_category("Item Use Effects")
 @export var effects: Array[ItemEffect]

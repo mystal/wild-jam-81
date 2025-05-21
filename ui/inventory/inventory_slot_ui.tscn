@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4k7htfcrh2x6"]
+
+[ext_resource type="Texture2D" uid="uid://dplp5ryd4d0x2" path="res://ui/inventory/inventorySlot.png" id="1_huu8b"]
+[ext_resource type="Script" uid="uid://c2247nw556c4o" path="res://ui/inventory/inventory_slot_ui.gd" id="1_vmb2r"]
+
+[node name="InventorySlotUI" type="Button"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vmb2r")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("1_huu8b")
+centered = false
+vframes = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2

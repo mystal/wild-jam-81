@@ -7,6 +7,11 @@ class_name ItemPickup extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+
+func pick_up(inventory_data: InventoryData) -> void:
+	inventory_data.insert(item_data)
+	item_picked_up()
+
 func _ready() -> void:
 	_update_texture()
 	if Engine.is_editor_hint():
@@ -26,8 +31,7 @@ func set_item_data(value: ItemData) -> void:
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body is Player:
 		if item_data:
-			if PlayerManager.INVENTORY_DATA.add_item(item_data):
-				item_picked_up()
+			pick_up(PlayerManager.INVENTORY_DATA)
 	
 func item_picked_up() -> void:
 	area_2d.body_entered.disconnect(_on_body_entered)

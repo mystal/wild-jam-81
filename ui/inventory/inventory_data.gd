@@ -1,42 +1,46 @@
 class_name InventoryData extends Resource
 
-@export var slots: Array[SlotData]
+## Array of inventory slots (each holds an InventorySlot resource)
+@export var slots: Array[InventorySlot]
+## Emitted whenever the inventory changes
+signal updated
 
-func _init() -> void:
-	connect_slots()
-	
-func connect_slots() -> void:
-	for s in slots:
-		if s:
-			s.changed.connect(slot_changed)
-			
-func slot_changed() -> void:
-	for s in slots:
-		if s:
-			if s.quantity < 1:
-				s.changed.disconnect(slot_changed)
-				var index = slots.find(s)
-				slots[index] = null
-				emit_changed()
-	
-func add_item(item: ItemData, quantity: int = 1) -> bool:
-	for s in slots:
-		if s:
-			if s.item_data == item:
-				#handles stacking of items
-				s.quantity += quantity
-				emit_changed()
-				return true
-		
-	for i in slots.size():
-		if slots[i] == null:
-			var new = SlotData.new()
-			new.item_data = item
-			new.quantity = quantity
-			slots[i] = new
-			new.changed.connect(slot_changed)
-			emit_changed()
-			return true
-	#need to make code for max quantity, or stackable/unstackable items
-	print("inventory was full")
-	return false
+## Attempts to insert an item into the inventory.
+## - If the item is unique, only one can exist in the inventory.
+## - If possible, stacks the item up to its max_stack.
+## - Otherwise, adds the item to a new empty slot.
+func insert(item: ItemData) -> void:
+    # Unique item: only allow one in inventory
+    if item.unique:
+        for slot in slots:
+            if slot.item == item:
+                return # Already have this unique item, do not add
+    # Try to stack if possible
+    for slot in slots:
+        if slot.item == item and slot.quantity < item.max_stack:
+            slot.quantity += 1
+            updated.emit()
+            return
+    # Find empty slot
+    for i in range(slots.size()):
+        if slots[i].item == null:
+            slots[i].item = item
+            slots[i].quantity = 1
+            updated.emit()
+            return
+    # If no empty slot, do nothing (inventory full)
+
+## Removes the given inventory slot from the inventory (replaces with a new empty slot)
+func remove_slot(inventory_slot: InventorySlot) -> void:
+    var index = slots.find(inventory_slot)
+    if index < 0:
+        return
+    slots[index] = InventorySlot.new()
+    updated.emit()
+
+## Inserts the given inventory slot at the specified index
+func insert_slot(index: int, inventory_slot: InventorySlot) -> void:
+    # var old_index = slots.find(inventory_slot)
+    # remove_slot(old_index)
+    slots[index] = inventory_slot
+    updated.emit()
