@@ -44,9 +44,8 @@ death_animation = NodePath("Death")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_li0pj")
-animation = &"walk_down"
+animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.469875
 
 [node name="Death" type="AnimatedSprite2D" parent="."]
 visible = false

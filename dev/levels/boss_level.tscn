@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://bjd18r6jrdqc5"]
+[gd_scene load_steps=7 format=4 uid="uid://bjd18r6jrdqc5"]
 
 [ext_resource type="Script" uid="uid://b5vkxrumoxb7f" path="res://dev/levels/level.gd" id="1_s3gj8"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_f0n0p"]
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="2_irdex"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="3_f0n0p"]
 [ext_resource type="PackedScene" uid="uid://bfblo2p125v8s" path="res://dev/levels/transition/level_transition.tscn" id="4_wn41j"]
+[ext_resource type="PackedScene" uid="uid://db8t86ijuvtfl" path="res://entities/bosses/blue_slime/blue_slime_boss.tscn" id="6_f0n0p"]
 
 [node name="BossLevel" type="Node2D"]
 script = ExtResource("1_s3gj8")
@@ -33,3 +34,8 @@ level = "uid://d0e0xsagl5mao"
 target_transition_area = "LevelTransition2"
 side = 2
 size = 5
+
+[node name="BlueSlimeBoss" parent="." instance=ExtResource("6_f0n0p")]
+position = Vector2(160, 88)
+collision_layer = 4
+motion_mode = 1
