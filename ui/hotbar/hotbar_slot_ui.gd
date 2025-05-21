@@ -19,22 +19,23 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
     if (event.is_action_pressed("hotbar_" + str(slot_number))):
-        if item_stack_ui.inventory_slot.item == null:
-            return
-        if item_stack_ui.inventory_slot:
-            if item_stack_ui.inventory_slot.item:
-                var was_used = item_stack_ui.inventory_slot.item.use()
-                if was_used == false:
-                    return
-                item_stack_ui.inventory_slot.quantity -= 1
-                if item_stack_ui.inventory_slot.quantity <= 0:
-                    var item = item_stack_ui
-                    inventory.remove_slot(item_stack_ui.inventory_slot)
-                    container.remove_child(item)
-                    background.frame = 0
-                else:
-                    item_stack_ui.update()
-                # quantity_label.text = str(item_stack_ui.inventory_slot.quantity)
+        inventory.use_item_at_index(slot_number)
+        # if item_stack_ui.inventory_slot.item == null:
+        #     return
+        # if item_stack_ui.inventory_slot:
+        #     if item_stack_ui.inventory_slot.item:
+        #         var was_used = item_stack_ui.inventory_slot.item.use()
+        #         if was_used == false:
+        #             return
+        #         item_stack_ui.inventory_slot.quantity -= 1
+        #         if item_stack_ui.inventory_slot.quantity <= 0:
+        #             # var item = item_stack_ui
+        #             inventory.remove_slot(item_stack_ui.inventory_slot)
+        #             # container.remove_child(item)
+        #             background.frame = 0
+        #         else:
+        #             item_stack_ui.update()
+        #         # quantity_label.text = str(item_stack_ui.inventory_slot.quantity)
 
 func update_to_slot(slot: InventorySlot) -> void:
     if slot.item == null:

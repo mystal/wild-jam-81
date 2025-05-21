@@ -22,6 +22,7 @@ func update() -> void:
         # If the slot is empty, set background to empty and skip
         if inventory_slot == null || inventory_slot.item == null:
             slot_ui.background.frame = 0
+            slots[i].clear()
             continue
         # Otherwise, ensure the slot has an ItemStackUI and update it
         var item_stack_ui: ItemStackUI = slot_ui.item_stack_ui
@@ -91,7 +92,7 @@ func update_selected_item():
 
 ##Called every input event; updates the selected item's position if dragging
 func _input(_event: InputEvent) -> void:
-    if item_selected != null && Input.is_action_just_pressed("right_click"):
+    if item_selected != null && (Input.is_action_just_pressed("right_click") || Input.is_action_just_pressed("left_click")):
         # If right-clicked, drop the item
         drop_item()
     update_selected_item()

@@ -30,13 +30,14 @@ func take_item() -> ItemStackUI:
     var item = item_stack_ui
 
     inventory.remove_slot(item_stack_ui.inventory_slot)
-
-    container.remove_child(item)
-    item_stack_ui = null
-    background.frame = 0
-
     return item
 
 ##Returns true if this slot is empty (no ItemStackUI)
 func is_empty() -> bool:
     return item_stack_ui == null
+
+func clear() -> void:
+    if item_stack_ui != null:
+        container.remove_child(item_stack_ui)
+        item_stack_ui = null
+        background.frame = 0

@@ -64,10 +64,6 @@ item_data = ExtResource("8_27600")
 position = Vector2(80, 84)
 item_data = ExtResource("9_bvhtb")
 
-[node name="ItemPickup5" parent="Entities/Scrolls" instance=ExtResource("6_wb5mu")]
-position = Vector2(80, 84)
-item_data = ExtResource("9_bvhtb")
-
 [node name="ItemPickup6" parent="Entities/Scrolls" instance=ExtResource("6_wb5mu")]
 position = Vector2(106, 101)
 item_data = ExtResource("9_bvhtb")
