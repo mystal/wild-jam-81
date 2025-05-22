@@ -1,6 +1,6 @@
 class_name CharacterChase extends State
 
-@export var anim_name: String = "wander"
+@export var anim_name: String = "chase"
 @export var chase_speed: float = 40.0
 @export var turn_rate: float = 0.25
 

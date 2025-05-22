@@ -1,6 +1,4 @@
-class_name Level extends Node2D
-@onready var player: Player = $Player
-@onready var elder: VillageElder = $VillageElder
+class_name BaseLevel extends Node2D
 
 func _ready() -> void:
 	self.y_sort_enabled = true

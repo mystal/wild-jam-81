@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://jao466m0tmgv"]
 
-[ext_resource type="Script" uid="uid://b5vkxrumoxb7f" path="res://dev/levels/level.gd" id="1_bvhtb"]
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="1_dvnf3"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_kpeuh"]
+[ext_resource type="Script" uid="uid://b6nff3ymj6cbr" path="res://dev/levels/base_level.gd" id="1_pcvw7"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_pcvw7"]
 [ext_resource type="PackedScene" uid="uid://6fgjc66wuimr" path="res://entities/characters/eye/evil_eye.tscn" id="3_qyr1s"]
 [ext_resource type="PackedScene" uid="uid://2ppj4lvpgxpx" path="res://entities/characters/samurai/samurai_blue.tscn" id="4_dkl2h"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bfblo2p125v8s" path="res://dev/levels/transition/level_transition.tscn" id="13_1o50d"]
 
 [node name="TestLevel" type="Node2D"]
-script = ExtResource("1_bvhtb")
+script = ExtResource("1_pcvw7")
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_pcvw7")]
 

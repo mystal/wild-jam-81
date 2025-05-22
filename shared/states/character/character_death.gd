@@ -19,12 +19,10 @@ func enter() -> void:
 	_direction = character.global_position.direction_to(_damage_position)
 	character.last_direction = _direction
 	character.velocity = _direction * knockback_speed
+	character.animated_sprite_2d.visible = false
 	character.death_animation.visible = true
 	character.death_animation.play("death")
 	drop_items()
-
-func exit() -> void:
-	pass
 
 func physics_update(_delta: float) -> void:
 	character.velocity -= character.velocity * decelerate_speed * _delta
