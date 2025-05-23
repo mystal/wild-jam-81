@@ -22,6 +22,7 @@ region_rect = Rect2(80, 208, 16, 16)
 shape = SubResource("CircleShape2D_wf2jh")
 
 [node name="Destructable" parent="." instance=ExtResource("2_vkjej")]
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable"]
 shape = SubResource("CircleShape2D_4rfoh")
