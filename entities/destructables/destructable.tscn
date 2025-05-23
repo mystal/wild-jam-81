@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfsmjlausfjf"]
+
+[ext_resource type="Script" uid="uid://ce23aw6j5usd8" path="res://entities/destructables/destructable.gd" id="1_kh14t"]
+
+[node name="Destructable" type="Area2D"]
+script = ExtResource("1_kh14t")
