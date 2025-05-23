@@ -1,4 +1,5 @@
 class_name HitBox extends Area2D
+@onready var collision: CollisionShape2D = $HitBoxCollision
 
 signal hit(hurt_box: HurtBox)
 

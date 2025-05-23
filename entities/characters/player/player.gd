@@ -81,3 +81,4 @@ func _on_health_died() -> void:
 
 func cast_spell(item_effect: ItemEffect) -> void:
 	spell_manager.cast_spell(item_effect)
+

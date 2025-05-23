@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2yp1u6bugdye"]
+
+[ext_resource type="Script" uid="uid://duamio1yrw5iw" path="res://entities/items/bomb/explosion.gd" id="1_vmvpk"]
+
+[node name="Explosion" type="Area2D"]
+script = ExtResource("1_vmvpk")
