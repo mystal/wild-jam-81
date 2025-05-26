@@ -13,8 +13,10 @@ script = ExtResource("1_j43pd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.57079
 sprite_frames = ExtResource("2_0la7r")
-animation = &"fire_spell_travel"
+animation = &"flame_explosion"
 autoplay = "fire_spell_travel"
+frame = 7
+frame_progress = 1.0
 
 [node name="HitBox" parent="." instance=ExtResource("3_0la7r")]
 

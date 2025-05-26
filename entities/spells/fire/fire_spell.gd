@@ -15,6 +15,8 @@ func _ready() -> void:
 	visible = false
 	current_state = State.INACTIVE
 	player = PlayerManager.player
+	animated_sprite_2d.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	hit_box.hit.connect(_on_hit_box_hit)
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.TRAVEL:
