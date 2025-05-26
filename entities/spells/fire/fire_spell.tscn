@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://q5h8jwxbpg5c" path="res://entities/spells/fire/fire_spell.gd" id="1_j43pd"]
 [ext_resource type="SpriteFrames" uid="uid://n54u8mlluhcf" path="res://vfx/spell_effect_animations.tres" id="2_0la7r"]
-[ext_resource type="Script" uid="uid://86s0jw45glwo" path="res://shared/combat/hit_box.gd" id="2_qwj5o"]
+[ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="3_0la7r"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qwj5o"]
-radius = 7.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_0la7r"]
+radius = 9.05539
 
 [node name="FireSpell" type="Node2D"]
 script = ExtResource("1_j43pd")
@@ -16,14 +16,11 @@ sprite_frames = ExtResource("2_0la7r")
 animation = &"fire_spell_travel"
 autoplay = "fire_spell_travel"
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 16
-script = ExtResource("2_qwj5o")
-metadata/_custom_type_script = "uid://86s0jw45glwo"
+[node name="HitBox" parent="." instance=ExtResource("3_0la7r")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_qwj5o")
+shape = SubResource("CircleShape2D_0la7r")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="hit" from="HitBox" to="." method="_on_hit_box_hit"]
+
+[editable path="HitBox"]

@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://dt7g8g6em3prn"]
+[gd_scene load_steps=2 format=3 uid="uid://dt7g8g6em3prn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urb7i"]
 
 [node name="NPC" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_urb7i")

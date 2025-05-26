@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://jao466m0tmgv"]
+[gd_scene load_steps=17 format=4 uid="uid://jao466m0tmgv"]
 
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="1_dvnf3"]
 [ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_kpeuh"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://ixhqdn8pcake" path="res://entities/items/fire_scroll/fire_scroll.tres" id="9_bvhtb"]
 [ext_resource type="PackedScene" uid="uid://d06hkcfi3rklr" path="res://dev/ui/debug_hud.tscn" id="10_ioy81"]
 [ext_resource type="PackedScene" uid="uid://bfblo2p125v8s" path="res://dev/levels/transition/level_transition.tscn" id="13_1o50d"]
+[ext_resource type="Resource" uid="uid://clk1vltooknk3" path="res://entities/items/bomb/bomb.tres" id="14_umilh"]
+[ext_resource type="PackedScene" uid="uid://dwodks0hjw286" path="res://entities/destructables/boulder/boulder.tscn" id="15_odqsu"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_pcvw7")
@@ -42,7 +44,6 @@ y_sort_enabled = true
 [node name="Player" parent="Entities" instance=ExtResource("1_dvnf3")]
 position = Vector2(152, 96)
 decelerate_speed = null
-faction = null
 
 [node name="Lantern" parent="Entities" instance=ExtResource("5_27600")]
 position = Vector2(256, 79)
@@ -59,6 +60,10 @@ position = Vector2(256, 128)
 [node name="ItemPickup2" parent="Entities" instance=ExtResource("6_wb5mu")]
 position = Vector2(35, 113)
 item_data = ExtResource("8_27600")
+
+[node name="Boulder" parent="Entities" instance=ExtResource("15_odqsu")]
+position = Vector2(48, 136)
+collision_mask = 1
 
 [node name="Scrolls" type="Node2D" parent="Entities"]
 
@@ -83,6 +88,16 @@ item_data = ExtResource("7_ioy81")
 [node name="ItemPickup4" parent="Entities/HealthPotions" instance=ExtResource("6_wb5mu")]
 position = Vector2(82, 50)
 item_data = ExtResource("7_ioy81")
+
+[node name="Bombs" type="Node2D" parent="Entities"]
+
+[node name="Bomb1" parent="Entities/Bombs" instance=ExtResource("6_wb5mu")]
+position = Vector2(56, 120)
+item_data = ExtResource("14_umilh")
+
+[node name="Bomb2" parent="Entities/Bombs" instance=ExtResource("6_wb5mu")]
+position = Vector2(64, 120)
+item_data = ExtResource("14_umilh")
 
 [node name="LevelTransition" parent="." instance=ExtResource("13_1o50d")]
 position = Vector2(320, 104)

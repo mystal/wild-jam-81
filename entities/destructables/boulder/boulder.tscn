@@ -1,29 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://fq7jiv1fxr12"]
+[gd_scene load_steps=2 format=3 uid="uid://dwodks0hjw286"]
 
-[ext_resource type="Texture2D" uid="uid://bu80fsqx4plm2" path="res://levels/tilesets/TilesetNature.png" id="1_da5ve"]
-[ext_resource type="Script" uid="uid://c6beiqn3oo820" path="res://entities/destructables/boulder/boulder.gd" id="1_vkjej"]
 [ext_resource type="PackedScene" uid="uid://bfsmjlausfjf" path="res://entities/destructables/destructable.tscn" id="2_vkjej"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wf2jh"]
-radius = 8.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4rfoh"]
-radius = 9.0
-
-[node name="Boulder" type="Area2D"]
-script = ExtResource("1_vkjej")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_da5ve")
-region_enabled = true
-region_rect = Rect2(80, 208, 16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wf2jh")
-
-[node name="Destructable" parent="." instance=ExtResource("2_vkjej")]
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable"]
-shape = SubResource("CircleShape2D_4rfoh")
-debug_color = Color(0.672419, 0.507239, 0.0619181, 0.42)
+[node name="Boulder" instance=ExtResource("2_vkjej")]
+collision_mask = 7

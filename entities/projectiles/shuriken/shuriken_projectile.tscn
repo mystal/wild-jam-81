@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvn7w24ieqoc6"]
+[gd_scene load_steps=7 format=3 uid="uid://dvn7w24ieqoc6"]
 
 [ext_resource type="PackedScene" uid="uid://byspx14ishmha" path="res://entities/projectiles/base/projectile_base.tscn" id="1_qoue8"]
 [ext_resource type="Texture2D" uid="uid://dqcnms5gw4xp0" path="res://entities/projectiles/shuriken/ShurikenAnimated.png" id="2_ta6c4"]
@@ -25,6 +25,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lo7x5"]
+radius = 4.47214
+
 [node name="ShurikenProjectile" instance=ExtResource("1_qoue8")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -32,5 +35,8 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_nyepo")
 animation = &"travel"
 autoplay = "travel"
+
+[node name="Shape" type="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_lo7x5")
 
 [editable path="HitBox"]
