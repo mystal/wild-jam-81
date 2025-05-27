@@ -1,10 +1,1 @@
 $ln;Dev Levels;GameMap
-0;TestLevels:0,0,0:2,0,0:1,1,0:1,0,0
-[0,0,0]
-1,0,0,0|||:jao466m0tmgv
-[2,0,0]
-0,0,1,0|||:dg0k622otoswy
-[1,1,0]
-0,0,0,1|||:bjd18r6jrdqc5
-[1,0,0]
-1,1,1,0|||:d0e0xsagl5mao

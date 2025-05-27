@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxhnkxo4hdy8m"]
+[gd_scene load_steps=17 format=3 uid="uid://buk8kxwwtbnup"]
 
 [ext_resource type="Texture2D" uid="uid://cudqalgc3uj1m" path="res://entities/items/bomb/Bomb.png" id="1_mnms8"]
 [ext_resource type="Script" uid="uid://wb4v5lki7wm8" path="res://entities/items/bomb/bomb.gd" id="1_uuo1d"]
 [ext_resource type="Texture2D" uid="uid://bnsadog362lsj" path="res://vfx/explosion/SpriteSheet.png" id="3_ofxjn"]
 [ext_resource type="Script" uid="uid://86s0jw45glwo" path="res://shared/combat/hit_box.gd" id="4_w1g58"]
+[ext_resource type="PackedScene" uid="uid://dynsrv1kyhmsd" path="res://vfx/shadow/shadow.tscn" id="5_o4rm2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1g58"]
 atlas = ExtResource("3_ofxjn")
@@ -77,6 +78,10 @@ radius = 17.0294
 
 [node name="Bomb" type="Area2D"]
 script = ExtResource("1_uuo1d")
+
+[node name="Shadow" parent="." instance=ExtResource("5_o4rm2")]
+position = Vector2(3.55271e-15, 6)
+scale = Vector2(0.801666, 0.149524)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mnms8")

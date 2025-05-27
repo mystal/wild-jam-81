@@ -23,8 +23,9 @@ shape = SubResource("CircleShape2D_f0vgy")
 shape = SubResource("CircleShape2D_f0vgy")
 
 [node name="Shadow" parent="." instance=ExtResource("3_5oosn")]
+texture_filter = 1
 position = Vector2(0, 3)
-scale = Vector2(0.16333, 0.0433846)
+scale = Vector2(0.415832, 0.110456)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
