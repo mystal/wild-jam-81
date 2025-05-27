@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2oug1iotglle"]
+[gd_scene load_steps=6 format=3 uid="uid://b2oug1iotglle"]
 
 [ext_resource type="Script" uid="uid://p70ubbj36jj7" path="res://entities/items/item_pickup.gd" id="1_f0vgy"]
+[ext_resource type="Resource" uid="uid://clk1vltooknk3" path="res://entities/items/bomb/bomb.tres" id="2_c7twy"]
+[ext_resource type="PackedScene" uid="uid://dynsrv1kyhmsd" path="res://vfx/shadow/shadow.tscn" id="3_5oosn"]
+[ext_resource type="Texture2D" uid="uid://cudqalgc3uj1m" path="res://entities/items/bomb/Bomb.png" id="3_x20l8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0vgy"]
 radius = 6.0
@@ -9,6 +12,7 @@ radius = 6.0
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_f0vgy")
+item_data = ExtResource("2_c7twy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f0vgy")
@@ -18,8 +22,13 @@ shape = SubResource("CircleShape2D_f0vgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_f0vgy")
 
+[node name="Shadow" parent="." instance=ExtResource("3_5oosn")]
+position = Vector2(0, 3)
+scale = Vector2(0.16333, 0.0433846)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_x20l8")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"Recording"
