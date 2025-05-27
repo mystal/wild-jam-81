@@ -1,4 +1,5 @@
 @tool
+@icon("res://globals/spawners/enemy_spawner_icon.png")
 class_name EnemySpawner extends Area2D
 
 @export var enemies: Array[EnemySpawnData]
@@ -9,6 +10,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		sprite_2d.visible = true
 		return
+	else:
+		sprite_2d.visible = false
 	
 	randomize()
 	for enemy_data in enemies:

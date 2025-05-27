@@ -7,6 +7,9 @@ class_name Destructable extends StaticBody2D
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+    
 	health.died.connect(_on_health_died)
 	hurt_box.damaged.connect(_on_hurt_box_damaged)
 
@@ -19,7 +22,7 @@ func _on_health_died() -> void:
 	await damage_vfx()
 	sprite.visible = false
 	hurt_box.monitoring = false
-	# await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	queue_free()
 
 
