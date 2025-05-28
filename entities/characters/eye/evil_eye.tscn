@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://6fgjc66wuimr"]
+[gd_scene load_steps=39 format=3 uid="uid://6fgjc66wuimr"]
 
 [ext_resource type="Texture2D" uid="uid://dwa1120kyklxd" path="res://entities/characters/eye/Eye.png" id="1_5uapc"]
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_hrkhv"]
+[ext_resource type="PackedScene" uid="uid://dynsrv1kyhmsd" path="res://vfx/shadow/shadow.tscn" id="2_whhbb"]
 [ext_resource type="SpriteFrames" uid="uid://c166jfd6p2ni" path="res://shared/sprite_frames/death_animation.tres" id="3_oka1a"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_opgvx"]
 [ext_resource type="PackedScene" uid="uid://capcw3wwk3fbm" path="res://shared/combat/hit_box.tscn" id="4_3s3gm"]
@@ -217,6 +218,10 @@ script = ExtResource("1_hrkhv")
 state_machine = NodePath("StateMachine")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 death_animation = NodePath("Death")
+
+[node name="Shadow" parent="." instance=ExtResource("2_whhbb")]
+position = Vector2(-0.280048, 7)
+scale = Vector2(0.910006, 0.353516)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nqag")
