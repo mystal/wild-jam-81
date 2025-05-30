@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://di4r6bs6yv2t2"]
+[gd_scene load_steps=46 format=3 uid="uid://di4r6bs6yv2t2"]
 
 [ext_resource type="Script" uid="uid://dlpnxtww0wnpp" path="res://entities/characters/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://c75tjlae6g73b" path="res://entities/characters/player/SpriteSheet.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://ck546dr231fd3" path="res://shared/state_machine/state_machine.gd" id="3_8fjmc"]
 [ext_resource type="PackedScene" uid="uid://cv0aed03g6xko" path="res://shared/combat/hurt_box.tscn" id="3_qiwj3"]
+[ext_resource type="Script" uid="uid://bgc8f1cuqxe3" path="res://entities/characters/player/player_health_bar.gd" id="4_8veej"]
 [ext_resource type="Script" uid="uid://cfwld0iinr84r" path="res://shared/states/idle.gd" id="4_qiwj3"]
 [ext_resource type="Script" uid="uid://brlv8wvp4aehp" path="res://shared/states/walk.gd" id="5_26q78"]
 [ext_resource type="Script" uid="uid://ycabutn6ry65" path="res://shared/states/attack.gd" id="6_bectd"]
@@ -14,6 +15,8 @@
 [ext_resource type="Script" uid="uid://bylt2h5v53gu3" path="res://shared/combat/spells/spell_manager.gd" id="11_5otfs"]
 [ext_resource type="Script" uid="uid://3ge5ncclvplv" path="res://shared/states/hit.gd" id="11_mnavw"]
 [ext_resource type="Script" uid="uid://c36tcre2mg6ao" path="res://shared/states/death.gd" id="12_nuxbo"]
+[ext_resource type="Texture2D" uid="uid://colhdkmwkev6n" path="res://ui/assets/healthbarUnder.png" id="15_8veej"]
+[ext_resource type="Texture2D" uid="uid://b0oddo685c7p0" path="res://ui/assets/healthbarProgress.png" id="16_ou7en"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_221hk"]
 atlas = ExtResource("1_symyc")
@@ -294,6 +297,27 @@ motion_mode = 1
 script = ExtResource("1_abrql")
 speed = 100.0
 
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = 6.0
+offset_right = 22.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("15_8veej")
+texture_progress = ExtResource("16_ou7en")
+script = ExtResource("4_8veej")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sfv1e")
 animation = &"idle_down"
@@ -352,7 +376,6 @@ metadata/_custom_type_script = "uid://c36tcre2mg6ao"
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("11_0s3gd")
-max_health = 100.0
 metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 
 [node name="SpellManager" type="Node" parent="."]

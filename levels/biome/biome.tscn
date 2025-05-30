@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://f48k81ppnfdn"]
+
+[ext_resource type="Script" uid="uid://dq3xpxjmmav0" path="res://levels/biome/biome.gd" id="1_khlyw"]
+
+[node name="Biome" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_khlyw")

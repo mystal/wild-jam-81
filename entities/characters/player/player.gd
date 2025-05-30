@@ -6,6 +6,7 @@ signal direction_changed(new_direction: Vector2)
 @export_range(1, 20, 0.5) var decelerate_speed := 5.0
 @export var faction: Enums.Faction
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var health: Health = $Health
 var last_direction = Vector2.DOWN
 var direction = Vector2.ZERO
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -18,16 +19,20 @@ var is_attacking: bool = false
 @onready var _interaction_collision: CollisionShape2D = $InteractionArea2D/InteractionCollision
 @onready var _interaction_offset := absf(_interaction_collision.position.y)
 @onready var spell_manager: SpellManager = $SpellManager
-
 var current_health: float:
 	get():
-		return $Health.current
+		return health.current
+var max_health: float:
+	get():
+		return health.max_health
 
 var invulnerable: bool = false
 
 func _ready() -> void:
 	PlayerManager.register(self)
 	state_machine.register_player(self)
+	hurt_box.damaged.connect(_on_hurt_box_damaged)
+	health.died.connect(_on_health_died)
 	
 
 func _physics_process(delta: float) -> void:
@@ -70,15 +75,14 @@ func get_last_direction() -> String:
 func _on_hurt_box_damaged(hit_box: HitBox) -> void:
 	if invulnerable == true:
 		return
-	$Health.take_damage(hit_box.damage)
+	health.take_damage(hit_box.damage)
 	state_machine.change_state("hit")
 		
 func update_hp(amount: int) -> void:
-	$Health.heal(amount)
+	health.heal(amount)
 	#update HUD here
 func _on_health_died() -> void:
 	state_machine.change_state("death")
 
 func cast_spell(item_effect: ItemEffect) -> void:
 	spell_manager.cast_spell(item_effect)
-

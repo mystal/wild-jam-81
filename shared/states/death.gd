@@ -10,6 +10,8 @@ var _damage_position: Vector2
 var _direction: Vector2
 
 func enter() -> void:
+	if character == null:
+		return
 	character.death_animation.animation_finished.connect(_on_death_animation_finished)
 	character.invulnerable = true
 	_damage_position = character.hurt_box.global_position

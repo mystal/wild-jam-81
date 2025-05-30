@@ -40,7 +40,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_dvnf3")]
 position = Vector2(152, 96)
-decelerate_speed = null
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player" node_paths=PackedStringArray("tile_map_layer")]
 zoom = Vector2(4, 4)
