@@ -17,7 +17,7 @@ metroidvania_system/settings_file="res://levels/MetSysSettings.tres"
 config/name="Wild Jam 81"
 run/main_scene="uid://jao466m0tmgv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://dev/icon.svg"
 
 [audio]
 
