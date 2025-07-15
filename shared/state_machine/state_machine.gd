@@ -43,7 +43,7 @@ func change_state(new_state_name: String) -> void:
 		current_state = states[new_state_name]
 		current_state.enter()
 	else:
-		printerr("State: ", new_state_name, " not found!")
+		printerr("[%s] State: %s not found!" % [get_parent().name, new_state_name])
 
 func physics_update(delta: float) -> void:
 	if current_state:
