@@ -382,6 +382,4 @@ metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 script = ExtResource("11_5otfs")
 metadata/_custom_type_script = "uid://bylt2h5v53gu3"
 
-[connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]
-
 [editable path="HurtBox"]

@@ -11,7 +11,7 @@ enum SIDE {LEFT, RIGHT, TOP, BOTTOM}
 	set(_v):
 		side = _v
 		_update_area()
-		
+
 @export var snap_to_grid: bool = false:
 	set(_v):
 		_snap_to_grid()
@@ -29,19 +29,19 @@ func _ready() -> void:
 	_update_area()
 	if Engine.is_editor_hint():
 		return
-	
-	#don't want to trigger the next transition	
+
+	#don't want to trigger the next transition
 	monitoring = false
 	_place_player()
-	
+
 	await LevelManager.level_loaded
-	
+
 	monitoring = true
 	body_entered.connect(_player_entered)
-	
+
 	pass
 
-func _player_entered(body: Node2D) -> void:
+func _player_entered(_body: Node2D) -> void:
 	LevelManager.load_new_level(level, target_transition_area, get_offset())
 	pass
 
@@ -53,7 +53,7 @@ func _place_player() -> void:
 func get_offset() -> Vector2:
 	var offset = Vector2.ZERO
 	var player_position = PlayerManager.player.global_position
-	
+
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
 		offset.y = player_position.y - global_position.y
 		offset.x = 16
@@ -64,13 +64,13 @@ func get_offset() -> Vector2:
 		offset.y = 16
 		if side == SIDE.TOP:
 			offset.y *= -1
-	
+
 	return offset
 
 func _update_area() -> void:
 	var new_rect: Vector2 = Vector2(default_tile_size, default_tile_size)
 	var new_position: Vector2 = Vector2.ZERO
-	
+
 	if side == SIDE.TOP:
 		new_rect.x *= size
 		new_position.y -= default_tile_size / 2
@@ -83,13 +83,13 @@ func _update_area() -> void:
 	elif side == SIDE.RIGHT:
 		new_rect.y *= size
 		new_position.x += default_tile_size / 2
-	
+
 	if collision_shape_2d == null:
 		collision_shape_2d = get_node("CollisionShape2D")
-	
+
 	collision_shape_2d.shape.size = new_rect
 	collision_shape_2d.position = new_position
-	
+
 func _snap_to_grid() -> void:
 	position.x = round(position.x / 8) * 8
 	position.y = round(position.x / 8) * 8
