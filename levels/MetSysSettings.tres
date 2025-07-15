@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bu7qdhfsvn8sn"]
 
-[ext_resource type="Script" uid="uid://orxlanqpgccv" path="res://addons/MetroidvaniaSystem/Scripts/Settings.gd" id="1_ui0vk"]
-[ext_resource type="Resource" path="res://addons/MetroidvaniaSystem/Themes/Exquisite/Theme.tres" id="2_3kt0x"]
+[ext_resource type="Script" uid="uid://orxlanqpgccv" path="res://addons/MetroidvaniaSystem/Scripts/Settings.gd" id="1_twjq7"]
+[ext_resource type="Resource" uid="uid://bt6s3nd8xo6b" path="res://addons/MetroidvaniaSystem/Themes/Exquisite/Theme.tres" id="2_b1yjl"]
 
 [resource]
-script = ExtResource("1_ui0vk")
-theme = ExtResource("2_3kt0x")
-map_root_folder = "res://"
+script = ExtResource("1_twjq7")
+theme = ExtResource("2_b1yjl")
+map_root_folder = "res://levels/"
 map_extents = 100
 scene_template = ""
 in_game_cell_size = Vector2(1152, 648)
