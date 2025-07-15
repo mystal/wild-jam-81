@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addons]
+
+metroidvania_system/settings_file="res://levels/MetSysSettings.tres"
+
 [application]
 
 config/name="Wild Jam 81"
