@@ -21,8 +21,7 @@ func physics_update(_delta: float) -> void:
 func fire_projectile() -> void:
 	var new_projectile := projectile.instantiate()
 	new_projectile.position = projectile_weapon.global_position
-	var direction := (player.get_global_mouse_position() - projectile_weapon.global_position).normalized()
-	new_projectile.rotation = direction.angle()
+	new_projectile.rotation = player.aim.angle()
 	new_projectile.faction = player.faction
 
 	get_tree().current_scene.add_child(new_projectile)

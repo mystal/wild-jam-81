@@ -7,8 +7,10 @@ signal direction_changed(new_direction: Vector2)
 @export var faction: Enums.Faction
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health: Health = $Health
-var last_direction = Vector2.DOWN
-var direction = Vector2.ZERO
+var last_direction := Vector2.DOWN
+var direction := Vector2.ZERO
+var aim := Vector2.RIGHT
+var using_gamepad := false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
 var can_attack: bool = true
@@ -33,7 +35,6 @@ func _ready() -> void:
 	state_machine.register_player(self)
 	hurt_box.damaged.connect(_on_hurt_box_damaged)
 	health.died.connect(_on_health_died)
-	
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -48,15 +49,29 @@ func _physics_process(delta: float) -> void:
 		Vector2.RIGHT:
 			_interaction_collision.position = Vector2.RIGHT * _interaction_offset
 
+	# Update aim direction
+	var new_aim: Vector2
+	if using_gamepad:
+		new_aim = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down").normalized()
+	else:
+		var mouse_pos = get_global_mouse_position()
+		new_aim = (mouse_pos - global_position).normalized()
+	if new_aim != Vector2.ZERO:
+		aim = new_aim
+
 	state_machine.physics_update(delta)
-	var mouse_pos = get_global_mouse_position()
-	var dir = (mouse_pos - global_position).normalized()
 
-	projectile_weapon.global_position = global_position + (dir * 13.0)
-
-	projectile_weapon.look_at(mouse_pos)
+	# Update projectile aim indicator visual
+	projectile_weapon.global_position = global_position + (aim * 13.0)
+	projectile_weapon.rotation = aim.angle()
 
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventMouse:
+		using_gamepad = false
+	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		using_gamepad = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.handle_input(event)
@@ -77,7 +92,7 @@ func _on_hurt_box_damaged(hit_box: HitBox) -> void:
 		return
 	health.take_damage(hit_box.damage)
 	state_machine.change_state("hit")
-		
+
 func update_hp(amount: int) -> void:
 	health.heal(amount)
 	#update HUD here
