@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hyehrgwxiqbd"]
+[gd_scene load_steps=19 format=3 uid="uid://hyehrgwxiqbd"]
 
 [ext_resource type="Script" uid="uid://b1irm0pyx47t3" path="res://entities/characters/base/enemy.gd" id="1_jvo1v"]
 [ext_resource type="SpriteFrames" uid="uid://dq2erphpy5kex" path="res://entities/characters/slime/slime_animation_frames.tres" id="2_li0pj"]
@@ -21,9 +21,6 @@ size = Vector2(6, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v50ju"]
 radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_li0pj"]
-radius = 6.0
 
 [sub_resource type="Resource" id="Resource_0d3gi"]
 script = ExtResource("13_ebd82")
@@ -70,10 +67,6 @@ shape = SubResource("CircleShape2D_v50ju")
 
 [node name="HitBox" parent="." instance=ExtResource("4_xxsm4")]
 
-[node name="HitBoxCollision" parent="HitBox" index="0"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_li0pj")
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_v50ju")
 
@@ -113,8 +106,6 @@ max_health = 3.0
 metadata/_custom_type_script = "uid://vlpyllrtqxqb"
 
 [connection signal="animation_finished" from="Death" to="." method="_on_death_animation_animation_finished"]
-[connection signal="damaged" from="HurtBox" to="." method="_on_hurt_box_damaged"]
-[connection signal="died" from="Health" to="." method="_on_health_died"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

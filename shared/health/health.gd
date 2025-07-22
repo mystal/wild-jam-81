@@ -7,7 +7,7 @@ signal died()
 
 @export var max_health: float = 100.0
 
-var current: float = max_health
+@onready var current: float = max_health
 
 ## Returns how much damage was actually taken.
 func take_damage(amount: float) -> float:
