@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://d0e0xsagl5mao"]
 
 [ext_resource type="Script" uid="uid://b6nff3ymj6cbr" path="res://dev/levels/base_level.gd" id="1_pylhm"]
-[ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_tmhc1"]
+[ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/full_tileset.tres" id="1_tmhc1"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_lmcox"]
 [ext_resource type="PackedScene" uid="uid://bfblo2p125v8s" path="res://dev/levels/transition/level_transition.tscn" id="3_4c8de"]
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="3_jkgu2"]

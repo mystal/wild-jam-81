@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://dg0k622otoswy"]
 
 [ext_resource type="Script" uid="uid://dq7lwmer53ygk" path="res://dev/levels/village_elder_level.gd" id="1_7m31a"]
-[ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/floor_tileset.tres" id="1_j8lga"]
+[ext_resource type="TileSet" uid="uid://c4rh4wjqbgjo1" path="res://levels/tilesets/full_tileset.tres" id="1_j8lga"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_7m31a"]
 [ext_resource type="PackedScene" uid="uid://di4r6bs6yv2t2" path="res://entities/characters/player/player.tscn" id="2_c6mkj"]
 [ext_resource type="PackedScene" uid="uid://ciien055wqh0c" path="res://entities/characters/elder/village_elder.tscn" id="3_61kg8"]
